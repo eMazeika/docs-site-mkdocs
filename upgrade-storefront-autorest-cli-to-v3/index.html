@@ -1,0 +1,2229 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.0">
+    
+    
+      
+        <title>How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront - MkLorum</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.18ac144a.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-upgrade-autorest-generated-clients-to-virtocommerce-v3-in-the-storefront" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="MkLorum" class="md-header-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            MkLorum
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MkLorum" class="md-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    MkLorum
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Dynamic-Property/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Email-sending-settings/" title="Email sending settings documentation" class="md-nav__link">
+      Email sending settings documentation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Generating%20pdf-file/" title="Pdf-file creation support" class="md-nav__link">
+      Pdf-file creation support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Implementing-authorization-mechanism-using-JWT/" title="Implementing authorization mechanism using Json Web Tokens" class="md-nav__link">
+      Implementing authorization mechanism using Json Web Tokens
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Migrate-module-from-the-Platform-2.0-to-3.0-version/" title="Update VC Platform Module from version 2.x to version 3" class="md-nav__link">
+      Update VC Platform Module from version 2.x to version 3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../about/" title="Wefwe dfvdv" class="md-nav__link">
+      Wefwe dfvdv
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../code-breaking-changes-included-in-v3/" title="Breaking changes included in VirtoCommerce 3.0" class="md-nav__link">
+      Breaking changes included in VirtoCommerce 3.0
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../connect-storefront-to-platform-v3/" title="Connect Storefront to Platform" class="md-nav__link">
+      Connect Storefront to Platform
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../create-new-module/" title="How to create a new Dummy module" class="md-nav__link">
+      How to create a new Dummy module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-precompiled-binaries-linux/" title="Deploy Platform V3 from precompiled binaries on Linux" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-precompiled-binaries-windows/" title="Deploy Platform V3 from precompiled binaries on Windows" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Windows
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-source-code/" title="Deploy Platform from source code" class="md-nav__link">
+      Deploy Platform from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-module-from-source-code/" title="Deploy Module from source code" class="md-nav__link">
+      Deploy Module from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../extend-DB-model/" title="How to extend the DB model of VC module (v3)" class="md-nav__link">
+      How to extend the DB model of VC module (v3)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting started (title from metadata)" class="md-nav__link">
+      Getting started (title from metadata)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sharing-bearer-tokens-across-platform-instances/" title="How to sharing bearer tokens across platform instances" class="md-nav__link">
+      How to sharing bearer tokens across platform instances
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../swagger-endpoints/" title="Swagger endpoints" class="md-nav__link">
+      Swagger endpoints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront" class="md-nav__link md-nav__link--active">
+      How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preconditions" class="md-nav__link">
+    Preconditions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-autorest-generated-clients" class="md-nav__link">
+    Upgrading AutoRest-generated clients
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading AutoRest-generated clients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform" class="md-nav__link">
+    Platform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-and-tax-modules" class="md-nav__link">
+    Core and Tax modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orders-module" class="md-nav__link">
+    Orders module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscription-module" class="md-nav__link">
+    Subscription module
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../using-autorest-with-v3/" title="How to generate AutoRest-generated clients with the Platform v.3" class="md-nav__link">
+      How to generate AutoRest-generated clients with the Platform v.3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../whats-new/" title="Whats new" class="md-nav__link">
+      Whats new
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      My lessons (custom title)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="My lessons (custom title)" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        My lessons (custom title)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson3/" title="Lesson 3 - How to create Virto commerce module (API)" class="md-nav__link">
+      Lesson 3 - How to create Virto commerce module (API)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson4/" title="Lessons 4 - How to build and customize platform manager Web UI (AngularJS)" class="md-nav__link">
+      Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson1/" title="Lesson 1 - How to deploy and configure Virto Commerce" class="md-nav__link">
+      Lesson 1 - How to deploy and configure Virto Commerce
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson2/" title="Lesson 2 - How to import new products into Virto Commerce catalog" class="md-nav__link">
+      Lesson 2 - How to import new products into Virto Commerce catalog
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23" type="checkbox" id="nav-23">
+    
+    <label class="md-nav__link" for="nav-23">
+      Modules
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Modules" data-md-level="1">
+      <label class="md-nav__title" for="nav-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23-1" type="checkbox" id="nav-23-1">
+    
+    <label class="md-nav__link" for="nav-23-1">
+      Catalog
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Catalog" data-md-level="2">
+      <label class="md-nav__title" for="nav-23-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Catalog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../modules/catalog/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24" type="checkbox" id="nav-24">
+    
+    <label class="md-nav__link" for="nav-24">
+      Vc2devguide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Vc2devguide" data-md-level="1">
+      <label class="md-nav__title" for="nav-24">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Vc2devguide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/system-requirements/" title="System Requirements - Virto Commerce 2 Developer Guide" class="md-nav__link">
+      System Requirements - Virto Commerce 2 Developer Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24-3" type="checkbox" id="nav-24-3">
+    
+    <label class="md-nav__link" for="nav-24-3">
+      Development scenarios
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Development scenarios" data-md-level="2">
+      <label class="md-nav__title" for="nav-24-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Development scenarios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/development-scenarios/working-with-platform-api/" title="Working with platform API" class="md-nav__link">
+      Working with platform API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contents" class="md-nav__link">
+    Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preconditions" class="md-nav__link">
+    Preconditions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upgrading-autorest-generated-clients" class="md-nav__link">
+    Upgrading AutoRest-generated clients
+  </a>
+  
+    <nav class="md-nav" aria-label="Upgrading AutoRest-generated clients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform" class="md-nav__link">
+    Platform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#core-and-tax-modules" class="md-nav__link">
+    Core and Tax modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#orders-module" class="md-nav__link">
+    Orders module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subscription-module" class="md-nav__link">
+    Subscription module
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="how-to-upgrade-autorest-generated-clients-to-virtocommerce-v3-in-the-storefront">How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront</h1>
+<h2 id="summary">Summary</h2>
+<p>Currently, storefront is compatible to both major versions of the Platform (v2, v3). This document describes how to upgrade Storefront AutoRest-generated clients (for platform and modules) to the latest v3 interfaces. This action allow you to modernize storefront but break compatibility with v2.
+An example of upgraded storefront (made during creation of this document) resides there: <a href="https://github.com/VirtoCommerce/vc-storefront-core/tree/upgrade/VP-1017-upgrade-RESTful-clients-to-v3">Upgraded storefront branch</a>.</p>
+<h2 id="contents">Contents</h2>
+<ul>
+<li><a href="#preconditions">Preconditions</a></li>
+<li><a href="#upgrading-autorest-generated-clients">Upgrading AutoRest-generated clients</a><ul>
+<li><a href="#platform">Platform</a></li>
+<li><a href="#catalog-module">Catalog module</a></li>
+<li><a href="#cart-module">Cart module</a></li>
+<li><a href="#content-module">Content module</a></li>
+<li><a href="#core-and-tax-modules">Core and Tax modules</a></li>
+<li><a href="#customer-module">Customer module</a></li>
+<li><a href="#inventory-module">Inventory module</a></li>
+<li><a href="#marketing-module">Marketing module</a></li>
+<li><a href="#orders-module">Orders module</a></li>
+<li><a href="#pricing-module">Pricing module</a></li>
+<li><a href="#shipping-module">Shipping module</a></li>
+<li><a href="#payment-module">Payment module</a></li>
+<li><a href="#sitemaps-module">Sitemaps module</a></li>
+<li><a href="#store-module">Store module</a></li>
+<li><a href="#subscription-module">Subscription module</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="preconditions">Preconditions</h2>
+<ul>
+<li>Open solution with storefront source code;</li>
+<li><a href="https://github.com/VirtoCommerce/vc-platform/blob/release/3.0.0/docs/using-autorest-with-v3.md">Learn how to install and use Autorest with v3</a>.</li>
+</ul>
+<hr />
+<h2 id="upgrading-autorest-generated-clients">Upgrading AutoRest-generated clients</h2>
+<hr />
+<h3 id="platform"><strong>Platform</strong></h3>
+<p>Run Autorest for <em>$modules = @('Platform','Notifications')</em>. Wait while Autorest finishes. <em>'Notifications'</em> passed because in v3 notifications module was extracted from platform to separate module.</p>
+<p>Try to compile solution. Look at the errors. Resolve errors and update code with recommendations below.</p>
+<blockquote>
+<p>file: \Domain\Common\NotificationConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'TestNotificationRequest' could not be found</td>
+<td>Notifications were extracted to a separate module, therefore:<ul><li>add<br><em>using VirtoCommerce.Storefront.AutoRestClients.NotificationsModuleApi.Models;</em></li><li>remove<br><em>using VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models;</em></li><li>rewrite <em>TestNotificationRequest</em> to <em>NotificationRequest</em> (typename was changed).</li></ul></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Controllers\AccountController.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'INotifications' could not be found</td>
+<td><ul><li>add<br><em>using VirtoCommerce.Storefront.AutoRestClients.NotificationsModuleApi;</em></li><li>remove<br><em>using VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi;</em></li></ul></td>
+</tr>
+<tr>
+<td>The type or namespace name 'SendNotificationResult' could not be found</td>
+<td><em>SendNotificationResult</em> was renamed to <em>NotificationSendResult</em>:<ul><li>add<br><em>using VirtoCommerce.Storefront.AutoRestClients.NotificationsModuleApi.Models;</em></li><li>change names <em>SendNotificationResult</em> to <em>NotificationSendResult</em></li></ul></td>
+</tr>
+<tr>
+<td>Errors with parameter type in call <em>_platformNotificationApi.SendNotificationAsync</em></td>
+<td>Change this call to a backward compatible method <em>_platformNotificationApi.SendNotificationByRequestAsync</em>.</td>
+</tr>
+<tr>
+<td>'IdentityResult' is an ambiguous reference between 'VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models.IdentityResult' and 'Microsoft.AspNetCore.Identity.IdentityResult'</td>
+<td>Remove: <em>using VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models;</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Controllers\Api\ApiAccountController.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A lot of errors like:<br>'IdentityResult' is an ambiguous reference between 'VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models.IdentityResult' and 'Microsoft.AspNetCore.Identity.IdentityResult'</td>
+<td>Remove:<ul><li><em>using VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi;</em></li><li><em>using VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models;</em></li></ul></td>
+</tr>
+<tr>
+<td>The type or namespace name 'INotifications' could not be found</td>
+<td>Add <em>using VirtoCommerce.Storefront.AutoRestClients.NotificationsModuleApi;</em></td>
+</tr>
+<tr>
+<td>Errors with parameter type in call <em>_platformNotificationApi.SendNotificationAsync</em></td>
+<td>Change this call to a backward compatible method <em>_platformNotificationApi.SendNotificationByRequestAsync</em>.</td>
+</tr>
+<tr>
+<td>The type or namespace name 'ChangePasswordInfo' could not be found</td>
+<td>It was renamed to <em>ChangePasswordRequest</em>, replace <em>ChangePasswordInfo</em> with <em>AutoRestClients.PlatformModuleApi.Models.ChangePasswordRequest</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Common\SettingConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'Setting' does not exist...</td>
+<td>It was renamed to <em>ObjectSettingEntry</em>: <ul><li>remove<br><em>using platformDto = VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models;</em></li><li>add<br><em>using platformDto = VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models;</em></li><li>change type name <em>Setting</em> to <em>ObjectSettingEntry</em>.</li><li>Check <em>ObjectSettingEntry</em>'s members for nulls before converting to string.</li></ul></td>
+</tr>
+<tr>
+<td>Issues inside <em>ToSettingEntry</em></td>
+<td><ul><li>There is no <em>Description</em> and <em>Title</em> anymore. Not used, just remove assignments;</li><li>Convert <em>DefaultValue</em> and <em>Value</em> to string;</li><li>Set <em>IsArray</em> to <strong>false</strong>. It's not used;</li><li>Remove <em>ArrayValues</em> assignment. It's not used;</li><li>Convert each item of <em>AllowedValues</em> to string.</li></ul><br>As a result the method should look like:<br></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>    <span class="k">public</span> <span class="k">static</span> <span class="n">SettingEntry</span> <span class="nf">ToSettingEntry</span><span class="p">(</span><span class="k">this</span> <span class="n">platformDto</span><span class="p">.</span><span class="n">ObjectSettingEntry</span> <span class="n">settingDto</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">retVal</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SettingEntry</span><span class="p">();</span>
+        <span class="n">retVal</span><span class="p">.</span><span class="n">DefaultValue</span> <span class="p">=</span> <span class="n">settingDto</span><span class="p">.</span><span class="n">DefaultValue</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+        <span class="n">retVal</span><span class="p">.</span><span class="n">IsArray</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="n">retVal</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="n">settingDto</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+        <span class="n">retVal</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">settingDto</span><span class="p">.</span><span class="n">Value</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+        <span class="n">retVal</span><span class="p">.</span><span class="n">ValueType</span> <span class="p">=</span> <span class="n">settingDto</span><span class="p">.</span><span class="n">ValueType</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">settingDto</span><span class="p">.</span><span class="n">AllowedValues</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">retVal</span><span class="p">.</span><span class="n">AllowedValues</span> <span class="p">=</span> <span class="n">settingDto</span><span class="p">.</span><span class="n">AllowedValues</span><span class="p">.</span><span class="n">Cast</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;().</span><span class="n">ToList</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">retVal</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+
+<blockquote>
+<p>file: \Domain\Security\SecurityConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'SecurityResult' does not exist...</td>
+<td>Rewrite <em>dto.SecurityResult</em> as <em>dto.IdentityResult</em>, it was renamed.</td>
+</tr>
+<tr>
+<td>The type or namespace name 'ApplicationUserExtended' does not exist</td>
+<td>Rewrite <em>dto.ApplicationUserExtended</em> as <em>dto.ApplicationUser</em>, it was renamed.</td>
+</tr>
+<tr>
+<td>Cannot implicitly convert type 'VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models.IdentityError' to 'string'</td>
+<td><em>IdentityResult</em> now contains errors as <em>IdentityError</em>. Use member <em>Description</em> (Rewrite <em>Description = x</em> as <em>Description = x.Description</em>).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Security\UserStoreStub.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'ApplicationUserExtended' does not exist</td>
+<td>Rewrite <em>ApplicationUserExtended</em> as <em>ApplicationUser</em>, it was renamed.</td>
+</tr>
+<tr>
+<td>'ISecurity' does not contain a definition for 'CreateAsyncAsync'...</td>
+<td><em>CreateAsyncAsync</em> was renamed to <em>CreateAsync</em></td>
+</tr>
+<tr>
+<td>'ISecurity' does not contain a definition for 'DeleteAsyncAsync'...</td>
+<td><em>DeleteAsyncAsync</em> was renamed to <em>DeleteAsync</em></td>
+</tr>
+<tr>
+<td>'ISecurity' does not contain a definition for 'UpdateAsyncAsync'...</td>
+<td><em>UpdateAsyncAsync</em> was renamed to <em>UpdateAsync</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommercePlatformRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommercePlatformRESTAPIdocumentation</em> as <em>PlatformModuleClient</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'INotifications' could not be found...</td>
+<td>add <em>using VirtoCommerce.Storefront.AutoRestClients.NotificationsModuleApi;</em></td>
+</tr>
+</tbody>
+</table>
+<p>Warning! Don't forget to register in DI AutoRestClient for newcoming Notifications module! Be sure to have in <em>AddPlatformEndpoint</em> following lines:</p>
+<div class="codehilite"><pre><span></span><code>    <span class="n">services</span><span class="p">.</span><span class="n">AddAutoRestClient</span><span class="p">((</span><span class="n">credentials</span><span class="p">,</span> <span class="n">httpClient</span><span class="p">,</span> <span class="n">disposeHttpClient</span><span class="p">,</span> <span class="n">baseUri</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">NotificationsModuleClient</span><span class="p">(</span><span class="n">credentials</span><span class="p">,</span> <span class="n">httpClient</span><span class="p">,</span> <span class="n">disposeHttpClient</span><span class="p">)</span> <span class="p">{</span> <span class="n">BaseUri</span> <span class="p">=</span> <span class="n">baseUri</span> <span class="p">});</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">INotifications</span><span class="p">&gt;(</span><span class="n">sp</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">Notifications</span><span class="p">(</span><span class="n">sp</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="p">&lt;</span><span class="n">NotificationsModuleClient</span><span class="p">&gt;()));</span>
+</code></pre></div>
+
+
+<blockquote>
+<p>file: \Domain\Security\PermissionAuthorizationPolicyProvider.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'ISecurity' does not contain a definition for 'GetPermissionsAsync'...</td>
+<td>Method was renamed to <em>GetAllRegisteredPermissionsAsync</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Security\PollingApiUserChangeToken.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'UserSearchRequest' could not be found...</td>
+<td><em>UserSearchRequest</em> was renamed to <em>UserSearchCriteria</em>. Also its fields <em>SkipCount</em>-&gt;<em>Skip</em>, <em>TakeCount</em>-&gt;<em>Take</em>.</td>
+</tr>
+<tr>
+<td>'UserSearchResult' does not contain a definition for 'TotalCount'</td>
+<td>Search result was incapsulated into a <em>Result</em> property of <em>UserSearchResult</em>. Therefore replace <em>result.TotalCount</em> with <em>result.Result.TotalCount</em>.</td>
+</tr>
+<tr>
+<td>'UserSearchResult' does not contain a definition for 'Users'</td>
+<td>Search result was incapsulated into a <em>Result</em> property of <em>UserSearchResult</em>. Therefore replace <em>result.Users</em> with <em>result.Result.Users</em>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Cart\CartConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'Setting' does not exist...</td>
+<td><em>Setting</em> was renamed to <em>ObjectSettingEntry</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Stores\StoreConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'Setting' does not exist...</td>
+<td><em>Setting</em> was renamed to <em>ObjectSettingEntry</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Stores\StoreService.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'Setting' does not exist...</td>
+<td><em>Setting</em> was renamed to <em>ObjectSettingEntry</em>, rewrite as <em>AutoRestClients.PlatformModuleApi.Models.ObjectSettingEntry</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Middleware\CreateStorefrontRolesMiddleware.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'RoleSearchRequest' could not be found...</td>
+<td><em>RoleSearchRequest</em> was renamed to <em>RoleSearchCriteria</em>. Also field <em>TakeCount</em>-&gt;<em>Take</em>.</td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Catalog module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Catalog')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Catalog\CatalogConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'ProductSearchCriteria' does not exist</td>
+<td><em>ProductSearchCriteria</em> was renamed to <em>ProductIndexedSearchCriteria</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'CategorySearchCriteria' does not exist</td>
+<td><em>CategorySearchCriteria</em> was renamed to <em>CategoryIndexedSearchCriteria</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceCatalogRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceCatalogRESTAPIdocumentation</em> as <em>PlatformModuleClient</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'ICatalogModuleSearch' could not be found...</td>
+<td><em>ICatalogModuleSearch</em> was renamed to <em>ICatalogModuleIndexedSearch</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'CatalogModuleSearch' could not be found...</td>
+<td><em>CatalogModuleSearch</em> was renamed to <em>CatalogModuleIndexedSearch</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Catalog\CatalogConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'Product' does not exist</td>
+<td><em>Product</em> was renamed to <em>CatalogProduct</em></td>
+</tr>
+<tr>
+<td>Warning! Variations in platform v3 have new type <em>Variation</em> itstead of storefront code where variations is a products. Therefore we need to add in this file additional conversion method to convert AutoRest-generated <em>Variation</em> to the <em>Product</em> in storefront. Let's do it:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>        <span class="k">public</span> <span class="k">static</span> <span class="n">Product</span> <span class="nf">ToProduct</span><span class="p">(</span><span class="k">this</span> <span class="n">catalogDto</span><span class="p">.</span><span class="n">Variation</span> <span class="n">variationDto</span><span class="p">,</span> <span class="n">Language</span> <span class="n">currentLanguage</span><span class="p">,</span> <span class="n">Currency</span> <span class="n">currentCurrency</span><span class="p">,</span> <span class="n">Store</span> <span class="n">store</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">variationDto</span><span class="p">.</span><span class="n">JsonConvert</span><span class="p">&lt;</span><span class="n">catalogDto</span><span class="p">.</span><span class="n">CatalogProduct</span><span class="p">&gt;().</span><span class="n">ToProduct</span><span class="p">(</span><span class="n">currentLanguage</span><span class="p">,</span> <span class="n">currentCurrency</span><span class="p">,</span> <span class="n">store</span><span class="p">);</span>
+        <span class="p">}</span>
+</code></pre></div>
+
+
+<blockquote>
+<p>file: \Domain\Catalog\CatalogService.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'ICatalogModuleSearch' could not be found...</td>
+<td><em>ICatalogModuleSearch</em> was renamed to <em>ICatalogModuleIndexedSearch</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'ProductSearchResult' could not be found...</td>
+<td><em>ProductSearchResult</em> was renamed to <em>ProductIndexedSearchResult</em></td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Cart module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Cart')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Cart\CartConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'ShipmentItem' could not be found...</td>
+<td><em>ShipmentItem</em> was renamed to <em>CartShipmentItem</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'Shipment' could not be found...</td>
+<td><em>Shipment</em> was renamed to <em>CartShipment</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'Address' could not be found...</td>
+<td><em>Address</em> was renamed to <em>CartAddress</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'LineItem' could not be found...</td>
+<td><em>LineItem</em> was renamed to <em>CartLineItem</em></td>
+</tr>
+<tr>
+<td>'ShippingRate' does not contain a definition for 'OptionDescription'</td>
+<td><em>OptionDescription</em> obsolete. Just remove this assignment.</td>
+</tr>
+<tr>
+<td>'PaymentMethod' does not contain a definition for 'Description'</td>
+<td><em>Description</em> obsolete. Just remove this assignment.</td>
+</tr>
+<tr>
+<td>The property or indexer 'ShoppingCart.ObjectType' cannot be used in this context because the set accessor is inaccessible</td>
+<td>Just remove this assignment. It does not matter because it's equal to .NET type name on the server.</td>
+</tr>
+<tr>
+<td>The property or indexer 'CartLineItem.ObjectType' cannot be used in this context because the set accessor is inaccessible</td>
+<td>Just remove this assignment. It does not matter because it's equal to .NET type name on the server.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceCartRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceCartRESTAPIdocumentation</em> as <em>CartModuleClient</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Cart\CartService.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'ICartModule' does not contain a definition for 'UpdateAsync'...</td>
+<td><em>UpdateAsync</em> was renamed to <em>UpdateShoppingCartAsync</em></td>
+</tr>
+<tr>
+<td>'ICartModule' does not contain a definition for 'SearchAsync'...</td>
+<td><em>SearchAsync</em> was renamed to <em>SearchShoppingCartAsync</em></td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Content module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Content')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceContentRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceContentRESTAPIdocumentation</em> as <em>ContentModuleClient</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="core-and-tax-modules"><strong>Core and Tax modules</strong></h3>
+<p>Run Autorest for <em>$modules = @('Core','Tax')</em>. Wait while Autorest finishes.
+We are running for both modules because a tax-linked part of Core module was moved to Tax module.</p>
+<blockquote>
+<p>file: \Domain\Common\DynamicPropertyConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A lot of errors like: The type or namespace name 'DynamicObjectProperty' could not be found...</td>
+<td><em>DynamicObjectProperty</em> was moved to platform API. Replace <em>coreDto.DynamicObjectProperty</em> with <em>platformDto.DynamicObjectProperty</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Tax\TaxConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'TaxRate' could not be found...</td>
+<td><em>TaxRate</em> was moved to Tax module: <ul><li>Add <em>using taxDto = VirtoCommerce.Storefront.AutoRestClients.TaxModuleApi.Models;</em></li><li>replace <em>coreDto.TaxRate</em> with <em>taxDto.TaxRate</em>;</li><li>Remove <em>using coreDto = VirtoCommerce.Storefront.AutoRestClients.CoreModuleApi.Models.</em></li></ul></td>
+</tr>
+<tr>
+<td>The type or namespace name 'TaxEvaluationContext' could not be found...</td>
+<td><em>TaxEvaluationContext</em> was moved to Tax module: replace <em>coreDto.TaxEvaluationContext</em> with <em>taxDto.TaxEvaluationContext</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'TaxLine' could not be found...</td>
+<td><em>TaxLine</em> was moved to Tax module: replace <em>coreDto.TaxLine</em> with <em>taxDto.TaxLine</em></li></ul></td>
+</tr>
+<tr>
+<td>The type or namespace name 'TaxDetail' could not be found...</td>
+<td><em>TaxDetail</em> was moved to Tax module: replace <em>coreDto.TaxDetail</em> with <em>taxDto.TaxDetail</em></li></ul></td>
+</tr>
+<tr>
+<td>'TaxCustomer' does not contain a definition for 'MemberType'</td>
+<td><em>MemberType</em> was removed. Remove assignment.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Tax\TaxEvaluator.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'TaxRate' does not exist...</td>
+<td><em>TaxRate</em> was moved to Tax module: <ul><li>add <em>using taxDto = VirtoCommerce.Storefront.AutoRestClients.TaxModuleApi.Models;</em></li><li>replace <em>coreService.TaxRate</em> with <em>taxDto.TaxRate</em>;</li><li>Remove <em>using coreService = VirtoCommerce.Storefront.AutoRestClients.CoreModuleApi.Models.</em></li></ul></td>
+</tr>
+<tr>
+<td>'ICommerce' does not contain a definition for 'EvaluateTaxesAsync'...</td>
+<td><em>EvaluateTaxesAsync</em> was moved to Tax module:<ul><li>add <em>using VirtoCommerce.Storefront.AutoRestClients.TaxModuleApi;</em></li><li>replace <em>ICommerce</em> with <em>ITaxModule</em> to make tax module methods accessible;</li><li>Rename member <em>_commerceApi</em> to <em>_taxApi</em>;</li><li>remove <em>using VirtoCommerce.Storefront.AutoRestClients.CoreModuleApi;</em></li></ul></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceCoreRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceCoreRESTAPIdocumentation</em> as <em>CoreModuleClient</em></td>
+</tr>
+<tr>
+<td>'TaxModule' does not contain a constructor that takes 3 arguments</td>
+<td>Rewrite <em>TaxModule</em> as <em>CoreModuleClient</em>.</td>
+</tr>
+<tr>
+<td>The type or namespace name 'IStorefrontSecurity' could not be found...<br>The type or namespace name 'StorefrontSecurity' could not be found...</td>
+<td>It's obsolete. Just remove this registration in DI.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Stores\StoreConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'DynamicObjectProperty' could not be found...</td>
+<td><em>DynamicObjectProperty</em> was moved to platform API. Replace <em>coreDto.DynamicObjectProperty</em> with <em>platformDto.DynamicObjectProperty</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Marketing\MarketingConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'DynamicObjectProperty' could not be found...</td>
+<td><em>DynamicObjectProperty</em> was moved to platform API. Replace <em>coreDto.DynamicObjectProperty</em> with <em>platformDto.DynamicObjectProperty</em>. Add appropriate using.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Order\OrderConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'DynamicObjectProperty' could not be found...</td>
+<td><em>DynamicObjectProperty</em> was moved to platform API. Replace <em>coreDto.DynamicObjectProperty</em> with <em>platformDto.DynamicObjectProperty</em>. Add appropriate using.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Cart\CartConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'DynamicObjectProperty' could not be found...</td>
+<td><em>DynamicObjectProperty</em> was moved to platform API. Replace <em>coreDto.DynamicObjectProperty</em> with <em>platformDto.DynamicObjectProperty</em></td>
+</tr>
+<tr>
+<td>Cannot implicitly convert type 'VirtoCommerce.Storefront.AutoRestClients.CoreModuleApi.Models.Address' to 'VirtoCommerce.Storefront.AutoRestClients.TaxModuleApi.Models.TaxAddress'</td>
+<td>Add conversion to <em>TaxAddress</em> thru <em>JsonConvert</em>: <br><em><code>retVal.Address = taxContext.Address.ToCoreAddressDto().JsonConvert&lt;taxDto.TaxAddress&gt;();</code></em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Customer\MemberConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'DynamicObjectProperty' could not be found...</td>
+<td><em>DynamicObjectProperty</em> was moved to platform API. Replace <em>coreDto.DynamicObjectProperty</em> with <em>platformDto.DynamicObjectProperty</em>. Add appropriate using.</td>
+</tr>
+<tr>
+<td>The type or namespace name 'Contact' does not exist in the namespace</td>
+<td><em>Contact</em> was moved to Customer module. Start with next topic: convert Customer module.</td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Customer module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Customer')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Customer\MemberConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'Contact' does not exist in the namespace</td>
+<td><em>Contact</em> was moved to Customer module. Replace <em>coreDto.Contact</em> with <em>customerDto.Contact</em>.</td>
+</tr>
+<tr>
+<td>The type or namespace name 'Address' could not be found...</td>
+<td><em>Address</em> was renamed to <em>CustomerAddress</em>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceCustomerRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceCustomerRESTAPIdocumentation</em> as <em>CoreModuleClient</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Customer\MemberService.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'ICustomerModule' does not contain a definition for 'SearchAsync' and no accessible extension method 'SearchAsync' ...</td>
+<td><em>SearchAsync</em> was renamed to <em>SearchMemberAsync</em>.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Tax\TaxConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cannot implicitly convert type 'VirtoCommerce.Storefront.AutoRestClients.CustomerModuleApi.Models.Contact' to 'VirtoCommerce.Storefront.AutoRestClients.TaxModuleApi.Models.TaxCustomer'</td>
+<td>Add conversion to <em>TaxCustomer</em> thru <em>JsonConvert</em>: <br><em><code>retVal.Customer = taxContext?.Customer?.Contact?.ToCoreContactDto().JsonConvert&lt;taxDto.TaxCustomer&gt;();</code></em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Quote\QuoteConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'DynamicObjectProperty' does not exist...</td>
+<td><em>DynamicObjectProperty</em> was moved to platform API. Replace <em>coreDto.DynamicObjectProperty</em> with <em>platformDto.DynamicObjectProperty</em>. Add appropriate using of platform models:<br><em>using platformDto = VirtoCommerce.Storefront.AutoRestClients.PlatformModuleApi.Models;</em></td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Inventory module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Inventory')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceInventoryRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceInventoryRESTAPIdocumentation</em> as <em>InventoryModuleClient</em></td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Marketing module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Marketing')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceMarketingRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceMarketingRESTAPIdocumentation</em> as <em>InventoryModuleClient</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="orders-module"><strong>Orders module</strong></h3>
+<p>Run Autorest for <em>$modules = @('Orders')</em>. Wait while Autorest finishes.</p>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceOrdersRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceOrdersRESTAPIdocumentation</em> as <em>OrdersModuleClient</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Controllers\Api\ApiCartController.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'ProcessPaymentResult' does not exist</td>
+<td><em>ProcessPaymentResult</em> was renamed to <em>ProcessPaymentRequestResult</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Order\OrderConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'ProcessPaymentResult' does not exist</td>
+<td><em>ProcessPaymentResult</em> was renamed to <em>ProcessPaymentRequestResult</em></td>
+</tr>
+<tr>
+<td>The type or namespace name 'Address' does not exist</td>
+<td><em>Address</em> was renamed to <em>OrderAddress</em>.</td>
+</tr>
+<tr>
+<td>The type or namespace name 'ShipmentItem' does not exist</td>
+<td><em>ShipmentItem</em> was renamed to <em>OrderShipmentItem</em>.</td>
+</tr>
+<tr>
+<td>The type or namespace name 'Shipment' does not exist</td>
+<td><em>Shipment</em> was renamed to <em>OrderShipmentItem</em>.</td>
+</tr>
+<tr>
+<td>The type or namespace name 'LineItem' does not exist</td>
+<td><em>LineItem</em> was renamed to <em>OrderLineItem</em>.</td>
+</tr>
+<tr>
+<td>'ProcessPaymentRequestResult' does not contain a definition for 'Error'</td>
+<td><em>Error</em> was renamed to <em>ErrorMessage</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Controllers\Api\ApiOrderController.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IOrderModule' does not contain a definition for 'SearchAsync' and no accessible extension method 'SearchAsync'</td>
+<td><em>SearchAsync</em> was renamed to <em>SearchCustomerOrderAsync</em></td>
+</tr>
+<tr>
+<td>IOrderModule' does not contain a definition for 'UpdateAsync' and no accessible extension method 'UpdateAsync'</td>
+<td><em>UpdateAsync</em> was renamed to <em>UpdateOrderAsync</em></td>
+</tr>
+<tr>
+<td>A lot of errors: There is no argument given that corresponds to the required formal parameter 'respGroup' of 'OrderModuleExtensions.GetByNumberAsync</td>
+<td>Write <em>string.Empty</em> to <em>respGroup</em> parameter.</td>
+</tr>
+<tr>
+<td>There is no argument given that corresponds to the required formal parameter 'respGroup' of 'OrderModuleExtensions.GetByIdAsync</td>
+<td>Write <em>string.Empty</em> to <em>respGroup</em> parameter.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Order\CustomerOrderService.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>There is no argument given that corresponds to the required formal parameter 'respGroup' of 'OrderModuleExtensions.GetByNumberAsync</td>
+<td>Write <em>string.Empty</em> to <em>respGroup</em> parameter.</td>
+</tr>
+<tr>
+<td>There is no argument given that corresponds to the required formal parameter 'respGroup' of 'OrderModuleExtensions.GetByIdAsync</td>
+<td>Write <em>string.Empty</em> to <em>respGroup</em> parameter.</td>
+</tr>
+<tr>
+<td>IOrderModule' does not contain a definition for 'SearchAsync' and no accessible extension method 'SearchAsync'</td>
+<td><em>SearchAsync</em> was renamed to <em>SearchCustomerOrderAsync</em></td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Pricing module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Pricing')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommercePricingRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommercePricingRESTAPIdocumentation</em> as <em>PricingModuleClient</em></td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Shipping module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Shipping')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'ShippingModule' does not contain a constructor that takes 3 arguments<br></td>
+<td>Rewrite <em>ShippingModule</em> as <em>ShippingModuleClient</em>.</td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Payment module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Payment')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'PaymentModule' does not contain a constructor that takes 3 arguments<br></td>
+<td>Rewrite <em>PaymentModule</em> as <em>PaymentModuleClient</em>.</td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Sitemaps module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Sitemaps')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceSitemapsRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceSitemapsRESTAPIdocumentation</em> as <em>SitemapsModuleClient</em></td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+</tr>
+<tr>
+<td>### <strong>Store module</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Run Autorest for <em>$modules = @('Store')</em>. Wait while Autorest finishes.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceStoreRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceStoreRESTAPIdocumentation</em> as <em>SitemapsModuleClient</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Stores\StoreService.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'PaymentMethod' does not exist<br> The type or namespace name 'TaxProvider' does not exist</td>
+<td>Just remove these usings</td>
+</tr>
+<tr>
+<td>'Store' does not contain a definition for 'PaymentMethods'...<br>'Store' does not contain a definition for 'TaxProviders'...</td>
+<td><em>storeDto</em> does not have such properties. We should always ask <em>_paymentModule</em> service for valid store payment methods and <em>_taxModule</em> for tax providers. Rewrite <em>ConvertStoreAndLoadDependeciesAsync</em> with this mean (look at the code after table).</td>
+</tr>
+<tr>
+<td>The type or namespace name 'StorePaymentMethod' could not be found</td>
+<td>Just remove <em>JsonConvert\<StorePaymentMethod>()</em> it doesn't need anymore.</td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code>        <span class="k">protected</span> <span class="k">virtual</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">Store</span><span class="p">&gt;</span> <span class="n">ConvertStoreAndLoadDependeciesAsync</span><span class="p">(</span><span class="n">StoreApi</span><span class="p">.</span><span class="n">Store</span> <span class="n">storeDto</span><span class="p">,</span> <span class="n">Currency</span> <span class="n">currency</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">storeDto</span><span class="p">.</span><span class="n">ToStore</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">currency</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">paymentSearchCriteria</span> <span class="p">=</span> <span class="k">new</span> <span class="n">PaymentMethodsSearchCriteria</span> <span class="p">{</span> <span class="n">StoreId</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Id</span> <span class="p">};</span>
+                <span class="kt">var</span> <span class="n">paymentsSearchResult</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_paymentModule</span><span class="p">.</span><span class="n">SearchPaymentMethodsAsync</span><span class="p">(</span><span class="n">paymentSearchCriteria</span><span class="p">);</span>
+
+                <span class="n">result</span><span class="p">.</span><span class="n">PaymentMethods</span> <span class="p">=</span> <span class="n">paymentsSearchResult</span><span class="p">.</span><span class="n">Results</span>
+                    <span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">pm</span> <span class="p">=&gt;</span> <span class="n">pm</span><span class="p">.</span><span class="n">IsActive</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">pm</span><span class="p">.</span><span class="n">IsActive</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span>
+                    <span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">pm</span> <span class="p">=&gt;</span>
+                    <span class="p">{</span>
+                        <span class="kt">var</span> <span class="n">paymentMethod</span> <span class="p">=</span> <span class="n">pm</span><span class="p">.</span><span class="n">ToStorePaymentMethod</span><span class="p">(</span><span class="n">currency</span><span class="p">);</span>
+                        <span class="n">paymentMethod</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="n">pm</span><span class="p">.</span><span class="n">TypeName</span><span class="p">;</span>
+                        <span class="k">return</span> <span class="n">paymentMethod</span><span class="p">;</span>
+                    <span class="p">}).</span><span class="n">ToArray</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="kt">var</span> <span class="n">taxSearchCriteria</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TaxProviderSearchCriteria</span> <span class="p">{</span> <span class="n">StoreId</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Id</span> <span class="p">};</span>
+            <span class="kt">var</span> <span class="n">taxProviderSearchResult</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_taxModule</span><span class="p">.</span><span class="n">SearchTaxProvidersAsync</span><span class="p">(</span><span class="n">taxSearchCriteria</span><span class="p">);</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">FixedTaxRate</span> <span class="p">=</span> <span class="n">GetFixedTaxRate</span><span class="p">(</span><span class="n">taxProviderSearchResult</span><span class="p">.</span><span class="n">Results</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">xp</span> <span class="p">=&gt;</span> <span class="n">xp</span><span class="p">.</span><span class="n">JsonConvert</span><span class="p">&lt;</span><span class="n">TaxProvider</span><span class="p">&gt;()).</span><span class="n">ToArray</span><span class="p">());</span>
+
+            <span class="c1">//use url for stores from configuration file with hight priority than store url defined in manager</span>
+            <span class="n">result</span><span class="p">.</span><span class="n">Url</span> <span class="p">=</span> <span class="n">_storefrontOptions</span><span class="p">.</span><span class="n">StoreUrls</span><span class="p">[</span><span class="n">result</span><span class="p">.</span><span class="n">Id</span><span class="p">]</span> <span class="p">??</span> <span class="n">result</span><span class="p">.</span><span class="n">Url</span><span class="p">;</span>
+
+            <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+        <span class="p">}</span>
+</code></pre></div>
+
+
+<blockquote>
+<p>file: \Domain\Stores\StoreConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'PaymentMethod' does not exist...<br>The type or namespace name 'TaxDetail' does not exist...</td>
+<td>They both were moved to payment module. Therefore add appropriate using <em>using paymentDto = VirtoCommerce.Storefront.AutoRestClients.PaymentModuleApi.Models;</em> then rewrite <em>storeDto.PaymentMethod</em> as <em>paymentDto.PaymentMethod</em>, <em>storeDto.TaxDetail</em>, as <em>paymentDto.TaxDetail</em></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>file: \Domain\Order\OrderConverter.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'PaymentMethod' does not exist...</td>
+<td>There meaning PaymentMethod from store module, that was moved in v3 to payment module. Therefore it is need to add appropriate using <em>using paymentDto = VirtoCommerce.Storefront.AutoRestClients.PaymentModuleApi.Models;</em> then rewrite <em>storeDto.PaymentMethod</em> as <em>paymentDto.PaymentMethod</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="subscription-module"><strong>Subscription module</strong></h3>
+<p>Run Autorest for <em>$modules = @('Subscription')</em>. Wait while Autorest finishes.</p>
+<blockquote>
+<p>file: \DependencyInjection\ServiceCollectionExtension.cs</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The type or namespace name 'VirtoCommerceSubscriptionRESTAPIdocumentation' could not be found...</td>
+<td>Rewrite <em>VirtoCommerceSubscriptionRESTAPIdocumentation</em> as <em>SitemapsModuleClient</em></td>
+</tr>
+</tbody>
+</table>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../swagger-endpoints/" title="Swagger endpoints" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Swagger endpoints
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../using-autorest-with-v3/" title="How to generate AutoRest-generated clients with the Platform v.3" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                How to generate AutoRest-generated clients with the Platform v.3
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

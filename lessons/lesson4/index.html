@@ -1,0 +1,1394 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Lessons 4 - How to build and customize platform manager Web UI (AngularJS)">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.0">
+    
+    
+      
+        <title>Lessons 4 - How to build and customize platform manager Web UI (AngularJS)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.18ac144a.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-build-and-customize-platform-manager-web-ui-angularjs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="MkLorum" class="md-header-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            MkLorum
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MkLorum" class="md-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    MkLorum
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Dynamic-Property/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Email-sending-settings/" title="Email sending settings documentation" class="md-nav__link">
+      Email sending settings documentation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Generating%20pdf-file/" title="Pdf-file creation support" class="md-nav__link">
+      Pdf-file creation support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Implementing-authorization-mechanism-using-JWT/" title="Implementing authorization mechanism using Json Web Tokens" class="md-nav__link">
+      Implementing authorization mechanism using Json Web Tokens
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Migrate-module-from-the-Platform-2.0-to-3.0-version/" title="Update VC Platform Module from version 2.x to version 3" class="md-nav__link">
+      Update VC Platform Module from version 2.x to version 3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../about/" title="Wefwe dfvdv" class="md-nav__link">
+      Wefwe dfvdv
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../code-breaking-changes-included-in-v3/" title="Breaking changes included in VirtoCommerce 3.0" class="md-nav__link">
+      Breaking changes included in VirtoCommerce 3.0
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../connect-storefront-to-platform-v3/" title="Connect Storefront to Platform" class="md-nav__link">
+      Connect Storefront to Platform
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../create-new-module/" title="How to create a new Dummy module" class="md-nav__link">
+      How to create a new Dummy module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deploy-from-precompiled-binaries-linux/" title="Deploy Platform V3 from precompiled binaries on Linux" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deploy-from-precompiled-binaries-windows/" title="Deploy Platform V3 from precompiled binaries on Windows" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Windows
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deploy-from-source-code/" title="Deploy Platform from source code" class="md-nav__link">
+      Deploy Platform from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deploy-module-from-source-code/" title="Deploy Module from source code" class="md-nav__link">
+      Deploy Module from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../extend-DB-model/" title="How to extend the DB model of VC module (v3)" class="md-nav__link">
+      How to extend the DB model of VC module (v3)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/" title="Getting started (title from metadata)" class="md-nav__link">
+      Getting started (title from metadata)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../sharing-bearer-tokens-across-platform-instances/" title="How to sharing bearer tokens across platform instances" class="md-nav__link">
+      How to sharing bearer tokens across platform instances
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../swagger-endpoints/" title="Swagger endpoints" class="md-nav__link">
+      Swagger endpoints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../upgrade-storefront-autorest-cli-to-v3/" title="How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront" class="md-nav__link">
+      How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../using-autorest-with-v3/" title="How to generate AutoRest-generated clients with the Platform v.3" class="md-nav__link">
+      How to generate AutoRest-generated clients with the Platform v.3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../whats-new/" title="Whats new" class="md-nav__link">
+      Whats new
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22" checked>
+    
+    <label class="md-nav__link" for="nav-22">
+      My lessons (custom title)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="My lessons (custom title)" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        My lessons (custom title)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lesson3/" title="Lesson 3 - How to create Virto commerce module (API)" class="md-nav__link">
+      Lesson 3 - How to create Virto commerce module (API)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Lessons 4 - How to build and customize platform manager Web UI (AngularJS)" class="md-nav__link md-nav__link--active">
+      Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    Glossary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-manager-ui-elements" class="md-nav__link">
+    Platform Manager UI elements
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform Manager UI elements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blade" class="md-nav__link">
+    Blade
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolbar" class="md-nav__link">
+    Toolbar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metaform" class="md-nav__link">
+    Metaform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#widget" class="md-nav__link">
+    Widget
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts-debugging" class="md-nav__link">
+    Scripts debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-customer-reviews-module-web-ui" class="md-nav__link">
+    Build "Customer reviews" module Web UI
+  </a>
+  
+    <nav class="md-nav" aria-label="Build "Customer reviews" module Web UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-localization-for-customer-reviews-module" class="md-nav__link">
+    Create localization for "Customer reviews" module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-api-controller-for-customer-reviews-module" class="md-nav__link">
+    Define API controller for "Customer reviews" module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-blade-for-customer-reviews-list" class="md-nav__link">
+    Define blade for "Customer reviews" list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-widget-for-customer-reviews-module" class="md-nav__link">
+    Define widget for "Customer reviews" module
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lesson1/" title="Lesson 1 - How to deploy and configure Virto Commerce" class="md-nav__link">
+      Lesson 1 - How to deploy and configure Virto Commerce
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lesson2/" title="Lesson 2 - How to import new products into Virto Commerce catalog" class="md-nav__link">
+      Lesson 2 - How to import new products into Virto Commerce catalog
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23" type="checkbox" id="nav-23">
+    
+    <label class="md-nav__link" for="nav-23">
+      Modules
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Modules" data-md-level="1">
+      <label class="md-nav__title" for="nav-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23-1" type="checkbox" id="nav-23-1">
+    
+    <label class="md-nav__link" for="nav-23-1">
+      Catalog
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Catalog" data-md-level="2">
+      <label class="md-nav__title" for="nav-23-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Catalog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/catalog/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24" type="checkbox" id="nav-24">
+    
+    <label class="md-nav__link" for="nav-24">
+      Vc2devguide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Vc2devguide" data-md-level="1">
+      <label class="md-nav__title" for="nav-24">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Vc2devguide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vc2devguide/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vc2devguide/system-requirements/" title="System Requirements - Virto Commerce 2 Developer Guide" class="md-nav__link">
+      System Requirements - Virto Commerce 2 Developer Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24-3" type="checkbox" id="nav-24-3">
+    
+    <label class="md-nav__link" for="nav-24-3">
+      Development scenarios
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Development scenarios" data-md-level="2">
+      <label class="md-nav__title" for="nav-24-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Development scenarios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vc2devguide/development-scenarios/working-with-platform-api/" title="Working with platform API" class="md-nav__link">
+      Working with platform API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#glossary" class="md-nav__link">
+    Glossary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-manager-ui-elements" class="md-nav__link">
+    Platform Manager UI elements
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform Manager UI elements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blade" class="md-nav__link">
+    Blade
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#toolbar" class="md-nav__link">
+    Toolbar
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metaform" class="md-nav__link">
+    Metaform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#widget" class="md-nav__link">
+    Widget
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scripts-debugging" class="md-nav__link">
+    Scripts debugging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-customer-reviews-module-web-ui" class="md-nav__link">
+    Build "Customer reviews" module Web UI
+  </a>
+  
+    <nav class="md-nav" aria-label="Build "Customer reviews" module Web UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-localization-for-customer-reviews-module" class="md-nav__link">
+    Create localization for "Customer reviews" module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-api-controller-for-customer-reviews-module" class="md-nav__link">
+    Define API controller for "Customer reviews" module
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-blade-for-customer-reviews-list" class="md-nav__link">
+    Define blade for "Customer reviews" list
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-widget-for-customer-reviews-module" class="md-nav__link">
+    Define widget for "Customer reviews" module
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="how-to-build-and-customize-platform-manager-web-ui-angularjs">How to build and customize Platform Manager Web UI (AngularJS)</h1>
+<h3 id="summary">Summary</h3>
+<p>Use this guide to create Platform Manager UI for the Virto Commerce "Customer Reviews" module (created in the <a href="/lesson3.md">Lesson 3</a>).</p>
+<p>After completing this lesson, a Platform Manager UI for the Virto Commerce "Customer Reviews" module will be created, including:</p>
+<ul>
+<li>blade with the customer reviews list for products;</li>
+<li>widget on the product page to view the number of reviews and open the new reviews blade for the product.</li>
+</ul>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Installed Virto Commerce Platform Manager</li>
+<li>Visual Studio 2019 or higher</li>
+<li>Basic JavaScript (AngularJS) knowledge</li>
+<li>Passed <a href="/lesson3.md">Lesson 3</a></li>
+</ul>
+<h3 id="glossary">Glossary</h3>
+<ul>
+<li>JS – JavaScript;</li>
+<li>Platform - Virto Commerce Platform;</li>
+<li>Platform Manager – Virto Commerce Platform Manager, UI for Platform managing;</li>
+<li>VC – Virto Commerce;</li>
+<li>VS – Visual Studio;</li>
+<li>UI – User Interface.</li>
+</ul>
+<h2 id="platform-manager-ui-elements">Platform Manager UI elements</h2>
+<p>The most common extension points for Platform Manager UI are:
+* Blade
+* Toolbar
+* Metaform
+* Widget</p>
+<p>Review these UI elements carefully before you start creating the UI for "Customer Reviews" module.</p>
+<h3 id="blade">Blade</h3>
+<p>Blade is the main UI element of the Platform Manager. Every blade has basic parts such as Maximize, Close buttons on the top and the title, toolbar, main content placeholders following down. You can find out all the blade features on the <a href="https://virtocommerce.com/guides/blade-constructor">Blade constructor</a>.</p>
+<p><img alt="Blade" src="../../assets/images/docs/lesson4-blade.png" /></p>
+<p>Read more in the <a href="https://virtocommerce.com/docs/vc2devguide/working-with-platform-manager/basic-functions/blades-and-navigation">Blades and navigation</a> article.</p>
+<h3 id="toolbar">Toolbar</h3>
+<p>A blade toolbar is a dedicated area inside blade for adding commands. Hereinafter, the toolbar commands shall be referenced to as toolbar items.</p>
+<p><img alt="Toolbar" src="../../assets/images/docs/lesson4-blade-toolbar.png" /></p>
+<p>Read more in the <a href="https://virtocommerce.com/docs/vc2devguide/working-with-platform-manager/basic-functions/blade-toolbar">Blade toolbar</a> article.</p>
+<h3 id="metaform">Metaform</h3>
+<p>A metaform is a placeholder (container) control that renders UI content based on provided metadata.</p>
+<p><img alt="Metaform" src="../../assets/images/docs/lesson4-blade-metaform.png" /></p>
+<p>Read more in the <a href="https://virtocommerce.com/docs/vc2devguide/working-with-platform-manager/basic-functions/metaform">Metaform</a> article.</p>
+<h3 id="widget">Widget</h3>
+<p>A widget is a relatively simple and intuitive web UI component in Platform Manager. It has the role of a transient or auxiliary tile, meaning that:</p>
+<ul>
+<li>it occupies just a portion of a blade;</li>
+<li>provides some useful information displayed in place;</li>
+<li>usually enables opening additional blade with extra information and functionality;</li>
+<li>is reusable and can be added to many blades (widget containers) in various places.</li>
+</ul>
+<p>A widget container is a placeholder control for individual widgets.</p>
+<p><img alt="Widget container" src="../../assets/images/docs/lesson4-blade-widgetcontainer.png" /></p>
+<p>Read more in the <a href="https://virtocommerce.com/docs/vc2devguide/working-with-platform-manager/basic-functions/widgets">Widgets</a> article.</p>
+<h2 id="scripts-debugging">Scripts debugging</h2>
+<p>In order to enable JS debugging in the Platform, set app setting <strong>VirtoCommerce:EnableBundlesOptimizations*<em> value to </em></strong>false*** in platform's Web.config:</p>
+<div class="codehilite"><pre><span></span><code><span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">&quot;VirtoCommerce:EnableBundlesOptimizations&quot;</span> <span class="na">value=</span><span class="s">&quot;false&quot;</span> <span class="nt">/&gt;</span>
+</code></pre></div>
+
+
+<p>Use the developer tools inside your browser, to actually debug the JS code. You can read more in <a href="https://javascript.info/debugging-chrome">Debugging in Chrome</a> article. </p>
+<h2 id="build-customer-reviews-module-web-ui">Build "Customer reviews" module Web UI</h2>
+<p>Platform Manager UI elements should be placed in CustomerReviewsModule&#46;Web\<strong>Scripts</strong> folder. Typical structure of this folder:</p>
+<ul>
+<li><strong>Scripts</strong> - the <em>root</em> folder for Platform Manager UI related content:</li>
+<li><strong>blades</strong> - folder containing AngularJS controllers and templates for the module blades;</li>
+<li><strong>resources</strong> - folder containing AngularJS definitions of the resources (API endpoints) exposed (and used) by this module;</li>
+<li><strong>widgets</strong> - folder containing AngularJS controllers and templates for the module widgets;</li>
+<li><strong>module.js</strong> - the main entry point for the module UI, containing AngularJS module definition, registrations for menus, widgets, etc.</li>
+</ul>
+<p>The Platform Manager also allows localizing UI elements. The localization is based on resources (translation files) placed in CustomerReviewsModule&#46;Web\<strong>Localizations</strong> folder. Read more  in the <a href="https://virtocommerce.com/docs/vc2devguide/working-with-platform-manager/localization-implementation">Localization implementation</a> article.</p>
+<h3 id="create-localization-for-customer-reviews-module">Create localization for "Customer reviews" module</h3>
+<p>First of all define the following names for blade and widget:</p>
+<ul>
+<li>blade title;</li>
+<li>blade labels (column names, "no-review" title);</li>
+<li>widget title.</li>
+</ul>
+<p>In order to localize defined names, you need to create the translation file <em>\Localizations\en.CustomerReviewsModule.json</em>.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;customerReviewsModule&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;blades&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Customer Reviews&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;review-list&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;labels&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="nt">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Content&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;modifiedDate&quot;</span><span class="p">:</span> <span class="s2">&quot;Last updated&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;no-review&quot;</span><span class="p">:</span> <span class="s2">&quot;No Customer Reviews found&quot;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;widgets&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;item-detail&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Customer reviews&quot;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>These translations will be used in blade and widget to label titles and field names in Platform Manager UI.</p>
+<h3 id="define-api-controller-for-customer-reviews-module">Define API controller for "Customer reviews" module</h3>
+<p>To get data from backend, define <em>search</em> API controller method in \CustomerReviewsModule.Web\Scripts\resources\<em>customer-reviews-module-api.js</em> file:</p>
+<div class="codehilite"><pre><span></span><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;customerReviewsModule&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">&#39;customerReviewsModule.webApi&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$resource&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$resource</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s1">&#39;api/CustomerReviewsModule&#39;</span><span class="p">,</span> <span class="p">{},</span> <span class="p">{</span>
+            <span class="nx">search</span><span class="o">:</span> <span class="p">{</span> <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;api/customerReviewsModule/search&#39;</span> <span class="p">}</span>
+        <span class="p">});</span>
+<span class="p">}]);</span>
+</code></pre></div>
+
+
+<p>More info in AngularJS <a href="https://docs.angularjs.org/api/ngResource/service/$resource">$resource article</a>.</p>
+<h3 id="define-blade-for-customer-reviews-list">Define blade for "Customer reviews" list</h3>
+<ol>
+<li>Create a new <strong>reviews-list.js</strong> blade JS file in <em>\Scripts\blades</em> folder and define <strong>customerReviewsModule.reviewsListController</strong> by adding code to the file:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;customerReviewsModule&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;customerReviewsModule.reviewsListController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;customerReviewsModule.webApi&#39;</span><span class="p">,</span> <span class="s1">&#39;platformWebApp.bladeUtils&#39;</span><span class="p">,</span> <span class="s1">&#39;uiGridConstants&#39;</span><span class="p">,</span> <span class="s1">&#39;platformWebApp.uiGridHelper&#39;</span><span class="p">,</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">reviewsApi</span><span class="p">,</span> <span class="nx">bladeUtils</span><span class="p">,</span> <span class="nx">uiGridConstants</span><span class="p">,</span> <span class="nx">uiGridHelper</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$scope</span><span class="p">.</span><span class="nx">uiGridConstants</span> <span class="o">=</span> <span class="nx">uiGridConstants</span><span class="p">;</span>
+
+            <span class="kd">var</span> <span class="nx">blade</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">blade</span><span class="p">;</span>
+            <span class="kd">var</span> <span class="nx">bladeNavigationService</span> <span class="o">=</span> <span class="nx">bladeUtils</span><span class="p">.</span><span class="nx">bladeNavigationService</span><span class="p">;</span>
+
+            <span class="nx">blade</span><span class="p">.</span><span class="nx">getSearchCriteria</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="nx">filter</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">searchPhrase</span><span class="o">:</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">keyword</span> <span class="o">?</span> <span class="nx">filter</span><span class="p">.</span><span class="nx">keyword</span> <span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span>
+                    <span class="nx">sort</span><span class="o">:</span> <span class="nx">uiGridHelper</span><span class="p">.</span><span class="nx">getSortExpression</span><span class="p">(</span><span class="nx">$scope</span><span class="p">),</span>
+                    <span class="nx">skip</span><span class="o">:</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">pageSettings</span><span class="p">.</span><span class="nx">currentPage</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">pageSettings</span><span class="p">.</span><span class="nx">itemsPerPageCount</span><span class="p">,</span>
+                    <span class="nx">take</span><span class="o">:</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">pageSettings</span><span class="p">.</span><span class="nx">itemsPerPageCount</span>
+                <span class="p">});</span>
+            <span class="p">};</span>
+
+            <span class="nx">blade</span><span class="p">.</span><span class="nx">refresh</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">blade</span><span class="p">.</span><span class="nx">isLoading</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="nx">reviewsApi</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="nx">blade</span><span class="p">.</span><span class="nx">getSearchCriteria</span><span class="p">(),</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">blade</span><span class="p">.</span><span class="nx">isLoading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+                    <span class="nx">$scope</span><span class="p">.</span><span class="nx">pageSettings</span><span class="p">.</span><span class="nx">totalItems</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">totalCount</span><span class="p">;</span>
+                    <span class="nx">blade</span><span class="p">.</span><span class="nx">currentEntities</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">results</span><span class="p">;</span>
+                <span class="p">});</span>
+            <span class="p">};</span>
+
+
+            <span class="nx">blade</span><span class="p">.</span><span class="nx">headIcon</span> <span class="o">=</span> <span class="s1">&#39;fa-comments&#39;</span><span class="p">;</span>
+
+            <span class="nx">blade</span><span class="p">.</span><span class="nx">toolbarCommands</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nx">name</span><span class="o">:</span> <span class="s2">&quot;platform.commands.refresh&quot;</span><span class="p">,</span> <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;fa fa-refresh&#39;</span><span class="p">,</span>
+                    <span class="nx">executeMethod</span><span class="o">:</span> <span class="nx">blade</span><span class="p">.</span><span class="nx">refresh</span><span class="p">,</span>
+                    <span class="nx">canExecuteMethod</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">];</span>
+
+            <span class="c1">// simple and advanced filtering</span>
+            <span class="kd">var</span> <span class="nx">filter</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">filter</span> <span class="o">=</span> <span class="nx">blade</span><span class="p">.</span><span class="nx">filter</span> <span class="o">||</span> <span class="p">{};</span>
+
+            <span class="nx">filter</span><span class="p">.</span><span class="nx">criteriaChanged</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">pageSettings</span><span class="p">.</span><span class="nx">currentPage</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">$scope</span><span class="p">.</span><span class="nx">pageSettings</span><span class="p">.</span><span class="nx">currentPage</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="nx">blade</span><span class="p">.</span><span class="nx">refresh</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">};</span>
+
+            <span class="c1">// ui-grid</span>
+            <span class="nx">$scope</span><span class="p">.</span><span class="nx">setGridOptions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">gridOptions</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">uiGridHelper</span><span class="p">.</span><span class="nx">initialize</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">gridOptions</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">gridApi</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">uiGridHelper</span><span class="p">.</span><span class="nx">bindRefreshOnSortChanged</span><span class="p">(</span><span class="nx">$scope</span><span class="p">);</span>
+                <span class="p">});</span>
+                <span class="nx">bladeUtils</span><span class="p">.</span><span class="nx">initializePagination</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">$parent</span><span class="p">);</span>
+            <span class="p">};</span>
+
+        <span class="p">}]);</span>
+</code></pre></div>
+
+
+<ol>
+<li>To show a Customer reviews list in a blade create a new <strong>reviews-list.tpl.html</strong> blade template file in the same folder:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;blade-static&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-group&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-input __search&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;{{&#39;platform.placeholders.search-keyword&#39; | translate}}&quot;</span> <span class="na">ng-model</span><span class="o">=</span><span class="s">&quot;filter.keyword&quot;</span> <span class="na">ng-keyup</span><span class="o">=</span><span class="s">&quot;$event.which === 13 &amp;&amp; filter.criteriaChanged()&quot;</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn __other&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;position: relative;right: 45px;&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;btn-ico fa fa-times-circle&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Clear&quot;</span> <span class="na">ng-click</span><span class="o">=</span><span class="s">&quot;filter.keyword=null;filter.criteriaChanged()&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;form-count&quot;</span><span class="p">&gt;</span>{{ &#39;platform.list.count&#39; | translate }}: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;count&quot;</span><span class="p">&gt;</span>{{pageSettings.totalItems | number:0}}<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;blade-static __bottom&quot;</span> <span class="na">ng-if</span><span class="o">=</span><span class="s">&quot;pageSettings.itemsPerPageCount &lt; pageSettings.totalItems&quot;</span> <span class="na">ng-include</span><span class="o">=</span><span class="s">&quot;&#39;pagerTemplate.html&#39;&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;blade-content&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;blade-inner&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;inner-block&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;table-wrapper&quot;</span> <span class="na">ng-init</span><span class="o">=</span><span class="s">&quot;setGridOptions({</span>
+<span class="s">                    useExternalSorting: true,</span>
+<span class="s">                    rowTemplate: &#39;list.row.html&#39;,</span>
+<span class="s">                    columnDefs: [</span>
+<span class="s">                                { name: &#39;content&#39;, displayName: &#39;customerReviewsModule.blades.review-list.labels.content&#39; },</span>
+<span class="s">                                { name: &#39;modifiedDate&#39;, displayName: &#39;customerReviewsModule.blades.review-list.labels.modifiedDate&#39;, sort: { direction: uiGridConstants.DESC }}</span>
+<span class="s">                        ]})&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">div</span> <span class="na">ui-grid</span><span class="o">=</span><span class="s">&quot;gridOptions&quot;</span> <span class="na">ui-grid-auto-resize</span> <span class="na">ui-grid-save-state</span> <span class="na">ui-grid-resize-columns</span> <span class="na">ui-grid-move-columns</span> <span class="na">ui-grid-pinning</span> <span class="na">ui-grid-height</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;note&quot;</span> <span class="na">ng-if</span><span class="o">=</span><span class="s">&quot;!blade.currentEntities.length&quot;</span><span class="p">&gt;</span>{{ &#39;customerReviewsModule.blades.review-list.labels.no-review&#39; | translate }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/ng-template&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;list.row.html&quot;</span><span class="p">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">click</span><span class="o">=</span><span class="s2">&quot;grid.appScope.blade.selectNode(row.entity)&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">repeat</span><span class="o">=</span><span class="s2">&quot;(colRenderIndex, col) in colContainer.renderedColumns track by col.uid&quot;</span> <span class="nx">ui</span><span class="o">-</span><span class="nx">grid</span><span class="o">-</span><span class="nx">one</span><span class="o">-</span><span class="nx">bind</span><span class="o">-</span><span class="nx">id</span><span class="o">-</span><span class="nx">grid</span><span class="o">=</span><span class="s2">&quot;rowRenderIndex + &#39;-&#39; + col.uid + &#39;-cell&#39;&quot;</span> <span class="kr">class</span><span class="o">=</span><span class="s2">&quot;ui-grid-cell&quot;</span> <span class="nx">ng</span><span class="o">-</span><span class="kr">class</span><span class="o">=</span><span class="s2">&quot;{&#39;ui-grid-row-header-cell&#39;: col.isRowHeader, &#39;__hovered&#39;: grid.appScope.contextMenuEntity === row.entity, &#39;__selected&#39;: row.entity.id===grid.appScope.selectedNodeId }&quot;</span> <span class="nx">role</span><span class="o">=</span><span class="s2">&quot;{{col.isRowHeader ? &#39;rowheader&#39; : &#39;gridcell&#39; }}&quot;</span> <span class="nx">ui</span><span class="o">-</span><span class="nx">grid</span><span class="o">-</span><span class="nx">cell</span><span class="o">&gt;&lt;</span><span class="err">/div&gt;</span>
+<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<ol>
+<li>Update the blade shown on activating the <code>workspace.customerReviewsModuleState</code> state in the AngularJS module by editing <em>\Scripts\module.js</em>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="o">~~~</span>
+<span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="nx">moduleName</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="p">.</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;$stateProvider&#39;</span><span class="p">,</span> <span class="s1">&#39;$urlRouterProvider&#39;</span><span class="p">,</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">$stateProvider</span><span class="p">,</span> <span class="nx">$urlRouterProvider</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$stateProvider</span>
+                <span class="p">.</span><span class="nx">state</span><span class="p">(</span><span class="s1">&#39;workspace.customerReviewsModuleState&#39;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;/customerReviewsModule&#39;</span><span class="p">,</span>
+                    <span class="nx">templateUrl</span><span class="o">:</span> <span class="s1">&#39;$(Platform)/Scripts/common/templates/home.tpl.html&#39;</span><span class="p">,</span>
+                    <span class="nx">controller</span><span class="o">:</span> <span class="p">[</span>
+                        <span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;platformWebApp.bladeNavigationService&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">bladeNavigationService</span><span class="p">)</span> <span class="p">{</span>
+                            <span class="kd">var</span> <span class="nx">newBlade</span> <span class="o">=</span> <span class="p">{</span>
+                                <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;reviewsList&#39;</span><span class="p">,</span>
+                                <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;customerReviewsModule.blades.review-list.title&#39;</span><span class="p">,</span>
+                                <span class="nx">controller</span><span class="o">:</span> <span class="s1">&#39;customerReviewsModule.reviewsListController&#39;</span><span class="p">,</span>
+                                <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;Modules/$(CustomerReviewsModule)/Scripts/blades/reviews-list.tpl.html&#39;</span><span class="p">,</span>
+                                <span class="nx">isClosingDisabled</span><span class="o">:</span> <span class="kc">true</span>
+                            <span class="p">};</span>
+                            <span class="nx">bladeNavigationService</span><span class="p">.</span><span class="nx">showBlade</span><span class="p">(</span><span class="nx">newBlade</span><span class="p">);</span>
+                        <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">])</span>
+
+<span class="o">~~~</span>
+</code></pre></div>
+
+
+<p>When the state is "activated", the blade's controller is bound to its template and the new blade is shown.</p>
+<ol>
+<li>Add a new menu item in main menu for the blade and define menu item permissions by editing <em>\CustomerReviewsModule.Web\Scripts\module.js</em>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code> <span class="o">~~~</span>
+  <span class="p">.</span><span class="nx">run</span><span class="p">([</span><span class="s1">&#39;platformWebApp.mainMenuService&#39;</span><span class="p">,</span> <span class="s1">&#39;platformWebApp.widgetService&#39;</span><span class="p">,</span> <span class="s1">&#39;$state&#39;</span><span class="p">,</span>
+        <span class="kd">function</span> <span class="p">(</span><span class="nx">mainMenuService</span><span class="p">,</span> <span class="nx">widgetService</span><span class="p">,</span> <span class="nx">$state</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//Register module in main menu</span>
+            <span class="kd">var</span> <span class="nx">menuItem</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;browse/customerReviewsModule&#39;</span><span class="p">,</span>
+                <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;fa fa-comments&#39;</span><span class="p">,</span>
+                <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Customer Reviews&#39;</span><span class="p">,</span>
+                <span class="nx">priority</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="nx">action</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">$state</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s1">&#39;workspace.customerReviewsModuleState&#39;</span><span class="p">)</span> <span class="p">},</span>
+                <span class="nx">permission</span><span class="o">:</span> <span class="s1">&#39;CustomerReviewsModule:read&#39;</span>
+            <span class="p">};</span>
+            <span class="nx">mainMenuService</span><span class="p">.</span><span class="nx">addMenuItem</span><span class="p">(</span><span class="nx">menuItem</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">]);</span>
+<span class="o">~~~</span>
+</code></pre></div>
+
+
+<ol>
+<li>Delete <em>\CustomerReviewsModule.Web\Scripts\blades\hello-world.html</em> and <em>\CustomerReviewsModule.Web\Scripts\blades\hello-world.js</em> files, that were created in the <strong>Lesson 3</strong> from Visual Studio template.</li>
+</ol>
+<p>Save all changes, restart the Platform application and open blade in main menu. You should see existing Customer reviews list:</p>
+<p><img alt="Reviews list blade" src="../../assets/images/docs/reviews-list-blade.png" /></p>
+<h3 id="define-widget-for-customer-reviews-module">Define widget for "Customer reviews" module</h3>
+<ol>
+<li>
+<p>Add new <em>widgets</em> subfolder inside <em>Scripts</em> folder.</p>
+</li>
+<li>
+<p>Create a new <em>customerReviewWidget.js</em> widget JS file in <em>widgets</em> folder and define <em>customerReviewsModule.customerReviewWidgetController</em> by adding code to the file:</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;customerReviewsModule&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">&#39;customerReviewsModule.customerReviewWidgetController&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;$scope&#39;</span><span class="p">,</span> <span class="s1">&#39;customerReviewsModule.webApi&#39;</span><span class="p">,</span> <span class="s1">&#39;platformWebApp.bladeNavigationService&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">reviewsApi</span><span class="p">,</span> <span class="nx">bladeNavigationService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">blade</span> <span class="o">=</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">blade</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">filter</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">take</span><span class="o">:</span> <span class="mi">0</span> <span class="p">};</span>
+
+        <span class="kd">function</span> <span class="nx">refresh</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nx">$scope</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">reviewsApi</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="nx">filter</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">$scope</span><span class="p">.</span><span class="nx">loading</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="nx">$scope</span><span class="p">.</span><span class="nx">totalCount</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">totalCount</span><span class="p">;</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">openBlade</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">loading</span> <span class="o">||</span> <span class="o">!</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">totalCount</span><span class="p">)</span>
+                <span class="k">return</span><span class="p">;</span>
+
+            <span class="kd">var</span> <span class="nx">newBlade</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="nx">id</span><span class="o">:</span> <span class="s2">&quot;reviewsList&quot;</span><span class="p">,</span>
+                <span class="nx">filter</span><span class="o">:</span> <span class="nx">filter</span><span class="p">,</span>
+                <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Customer reviews for &quot;&#39;</span> <span class="o">+</span> <span class="nx">blade</span><span class="p">.</span><span class="nx">title</span> <span class="o">+</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">,</span>
+                <span class="nx">controller</span><span class="o">:</span> <span class="s1">&#39;customerReviewsModule.reviewsListController&#39;</span><span class="p">,</span>
+                <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;Modules/$(CustomerReviewsModule)/Scripts/blades/reviews-list.tpl.html&#39;</span>
+            <span class="p">};</span>
+            <span class="nx">bladeNavigationService</span><span class="p">.</span><span class="nx">showBlade</span><span class="p">(</span><span class="nx">newBlade</span><span class="p">,</span> <span class="nx">blade</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">$watch</span><span class="p">(</span><span class="s2">&quot;blade.itemId&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">filter</span><span class="p">.</span><span class="nx">productIds</span> <span class="o">=</span> <span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="nx">refresh</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}]);</span>
+</code></pre></div>
+
+
+<ol>
+<li>Create a new <em>customerReviewWidget.tpl.html</em> widget template file in the same folder:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;gridster-cnt&quot;</span> <span class="na">ng-click</span><span class="o">=</span><span class="s">&quot;openBlade()&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;cnt-inner&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-count&quot;</span> <span class="na">ng-if</span><span class="o">=</span><span class="s">&quot;loading&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-count&quot;</span> <span class="na">ng-if</span><span class="o">=</span><span class="s">&quot;!loading&quot;</span><span class="p">&gt;</span>{{ totalCount }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;list-t&quot;</span> <span class="na">ng-if</span><span class="o">=</span><span class="s">&quot;!loading&quot;</span><span class="p">&gt;</span>{{ &#39;customerReviews.widgets.item-detail.title&#39; | translate }}<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+
+
+<ol>
+<li>"Inject" the new widget into the Product detail UI, by registering it in <strong>module.js</strong>:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="o">~~~</span>
+<span class="p">.</span><span class="nx">run</span><span class="p">([</span><span class="s1">&#39;platformWebApp.mainMenuService&#39;</span><span class="p">,</span> <span class="s1">&#39;platformWebApp.widgetService&#39;</span><span class="p">,</span> <span class="s1">&#39;$state&#39;</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">mainMenuService</span><span class="p">,</span> <span class="nx">widgetService</span><span class="p">,</span> <span class="nx">$state</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Register module in main menu</span>
+        <span class="kd">var</span> <span class="nx">menuItem</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;browse/customerReviews&#39;</span><span class="p">,</span>
+            <span class="nx">icon</span><span class="o">:</span> <span class="s1">&#39;fa fa-comments&#39;</span><span class="p">,</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;Customer Reviews&#39;</span><span class="p">,</span>
+            <span class="nx">priority</span><span class="o">:</span> <span class="mi">100</span><span class="p">,</span>
+            <span class="nx">action</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="nx">$state</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s1">&#39;workspace.customerReviews&#39;</span><span class="p">)</span> <span class="p">},</span>
+            <span class="nx">permission</span><span class="o">:</span> <span class="s1">&#39;customerReview:read&#39;</span>
+        <span class="p">};</span>
+        <span class="nx">mainMenuService</span><span class="p">.</span><span class="nx">addMenuItem</span><span class="p">(</span><span class="nx">menuItem</span><span class="p">);</span>
+
+        <span class="c1">//Register reviews widget inside product blade</span>
+        <span class="kd">var</span> <span class="nx">itemReviewsWidget</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="nx">controller</span><span class="o">:</span> <span class="s1">&#39;customerReviewsModule.customerReviewWidgetController&#39;</span><span class="p">,</span>
+            <span class="nx">template</span><span class="o">:</span> <span class="s1">&#39;Modules/$(CustomerReviewsModule)/Scripts/widgets/customerReviewWidget.tpl.html&#39;</span>
+        <span class="p">};</span>
+        <span class="nx">widgetService</span><span class="p">.</span><span class="nx">registerWidget</span><span class="p">(</span><span class="nx">itemReviewsWidget</span><span class="p">,</span> <span class="s1">&#39;itemDetail&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">]);</span>
+<span class="o">~~~</span>
+</code></pre></div>
+
+
+<p>Save all changes, restart application and open Product detail blade. You should see the new widget added and showing actual number of existing reviews for the product. If you click the widget, a new blade should appear, showing with the list of Customer reviews for the product.</p>
+<p><img alt="Customer review widget" src="../../assets/images/docs/reviews-list-widget.png" /></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../lesson3/" title="Lesson 3 - How to create Virto commerce module (API)" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Lesson 3 - How to create Virto commerce module (API)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../lesson1/" title="Lesson 1 - How to deploy and configure Virto Commerce" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Lesson 1 - How to deploy and configure Virto Commerce
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

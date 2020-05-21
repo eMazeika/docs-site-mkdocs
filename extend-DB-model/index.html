@@ -1,0 +1,955 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.0">
+    
+    
+      
+        <title>How to extend the DB model of VC module (v3) - MkLorum</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.18ac144a.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-extend-the-db-model-of-vc-module-v3" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="MkLorum" class="md-header-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            MkLorum
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              How to extend the DB model of VC module (v3)
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MkLorum" class="md-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    MkLorum
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Dynamic-Property/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Email-sending-settings/" title="Email sending settings documentation" class="md-nav__link">
+      Email sending settings documentation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Generating%20pdf-file/" title="Pdf-file creation support" class="md-nav__link">
+      Pdf-file creation support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Implementing-authorization-mechanism-using-JWT/" title="Implementing authorization mechanism using Json Web Tokens" class="md-nav__link">
+      Implementing authorization mechanism using Json Web Tokens
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Migrate-module-from-the-Platform-2.0-to-3.0-version/" title="Update VC Platform Module from version 2.x to version 3" class="md-nav__link">
+      Update VC Platform Module from version 2.x to version 3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../about/" title="Wefwe dfvdv" class="md-nav__link">
+      Wefwe dfvdv
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../code-breaking-changes-included-in-v3/" title="Breaking changes included in VirtoCommerce 3.0" class="md-nav__link">
+      Breaking changes included in VirtoCommerce 3.0
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../connect-storefront-to-platform-v3/" title="Connect Storefront to Platform" class="md-nav__link">
+      Connect Storefront to Platform
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../create-new-module/" title="How to create a new Dummy module" class="md-nav__link">
+      How to create a new Dummy module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-precompiled-binaries-linux/" title="Deploy Platform V3 from precompiled binaries on Linux" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-precompiled-binaries-windows/" title="Deploy Platform V3 from precompiled binaries on Windows" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Windows
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-source-code/" title="Deploy Platform from source code" class="md-nav__link">
+      Deploy Platform from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-module-from-source-code/" title="Deploy Module from source code" class="md-nav__link">
+      Deploy Module from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        How to extend the DB model of VC module (v3)
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="How to extend the DB model of VC module (v3)" class="md-nav__link md-nav__link--active">
+      How to extend the DB model of VC module (v3)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-core-project" class="md-nav__link">
+    Changes in ".Core" project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-data-project" class="md-nav__link">
+    Changes in ".Data" project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-web-project" class="md-nav__link">
+    Changes in ".Web" project
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting started (title from metadata)" class="md-nav__link">
+      Getting started (title from metadata)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sharing-bearer-tokens-across-platform-instances/" title="How to sharing bearer tokens across platform instances" class="md-nav__link">
+      How to sharing bearer tokens across platform instances
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../swagger-endpoints/" title="Swagger endpoints" class="md-nav__link">
+      Swagger endpoints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../upgrade-storefront-autorest-cli-to-v3/" title="How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront" class="md-nav__link">
+      How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../using-autorest-with-v3/" title="How to generate AutoRest-generated clients with the Platform v.3" class="md-nav__link">
+      How to generate AutoRest-generated clients with the Platform v.3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../whats-new/" title="Whats new" class="md-nav__link">
+      Whats new
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      My lessons (custom title)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="My lessons (custom title)" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        My lessons (custom title)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson3/" title="Lesson 3 - How to create Virto commerce module (API)" class="md-nav__link">
+      Lesson 3 - How to create Virto commerce module (API)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson4/" title="Lessons 4 - How to build and customize platform manager Web UI (AngularJS)" class="md-nav__link">
+      Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson1/" title="Lesson 1 - How to deploy and configure Virto Commerce" class="md-nav__link">
+      Lesson 1 - How to deploy and configure Virto Commerce
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson2/" title="Lesson 2 - How to import new products into Virto Commerce catalog" class="md-nav__link">
+      Lesson 2 - How to import new products into Virto Commerce catalog
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23" type="checkbox" id="nav-23">
+    
+    <label class="md-nav__link" for="nav-23">
+      Modules
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Modules" data-md-level="1">
+      <label class="md-nav__title" for="nav-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23-1" type="checkbox" id="nav-23-1">
+    
+    <label class="md-nav__link" for="nav-23-1">
+      Catalog
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Catalog" data-md-level="2">
+      <label class="md-nav__title" for="nav-23-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Catalog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../modules/catalog/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24" type="checkbox" id="nav-24">
+    
+    <label class="md-nav__link" for="nav-24">
+      Vc2devguide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Vc2devguide" data-md-level="1">
+      <label class="md-nav__title" for="nav-24">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Vc2devguide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/system-requirements/" title="System Requirements - Virto Commerce 2 Developer Guide" class="md-nav__link">
+      System Requirements - Virto Commerce 2 Developer Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24-3" type="checkbox" id="nav-24-3">
+    
+    <label class="md-nav__link" for="nav-24-3">
+      Development scenarios
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Development scenarios" data-md-level="2">
+      <label class="md-nav__title" for="nav-24-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Development scenarios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/development-scenarios/working-with-platform-api/" title="Working with platform API" class="md-nav__link">
+      Working with platform API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-core-project" class="md-nav__link">
+    Changes in ".Core" project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-data-project" class="md-nav__link">
+    Changes in ".Data" project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changes-in-web-project" class="md-nav__link">
+    Changes in ".Web" project
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="how-to-extend-the-db-model-of-vc-module-v3">How to extend the DB model of VC module (v3)</h1>
+<p>Model extension is evitable in VC modules development. This article provides the steps to take to extend any module's persistency model.</p>
+<blockquote>
+<p><a href="https://github.com/VirtoCommerce/vc-module-order/tree/release/3.0.0/samples/VirtoCommerce.OrdersModule2.Web">VirtoCommerce.OrdersModule2.Web</a> sample module is used as an example throughout the guide. </p>
+</blockquote>
+<h2 id="changes-in-core-project">Changes in "<em>.Core</em>" project</h2>
+<ol>
+<li>Add reference to <strong>"<em>.Core</em>"</strong> NuGet package containing the base models, e.g., <em>VirtoCommerce.OrdersModule.Core</em></li>
+<li>
+<p>Define the new model class by extending the base model in <strong>Models</strong> folder:</p>
+</li>
+<li>
+<p>e.g., <code>CustomerOrder2 : CustomerOrder</code> </p>
+</li>
+<li>Add the additional properties</li>
+</ol>
+<h2 id="changes-in-data-project">Changes in "<em>.Data</em>" project</h2>
+<ol>
+<li>Add reference to <strong>"<em>.Data</em>"</strong> NuGet package containing the base models, e.g., <em>VirtoCommerce.OrdersModule.Data</em></li>
+<li>
+<p>Define the new model class by extending the base model in <strong>Models</strong> folder:</p>
+</li>
+<li>
+<p>e.g., <code>CustomerOrder2Entity : CustomerOrderEntity</code> </p>
+</li>
+<li>Add the additional properties</li>
+<li>
+<p>Override <code>ToModel</code>, <code>FromModel</code>, and <code>Patch</code> methods</p>
+</li>
+<li>
+<p>Changes in <strong>Repositories</strong> folder:</p>
+</li>
+<li>Define a new DbContext class by extending the parent DbContext; add 1 public constructor; override <code>OnModelCreating</code>. Check <a href="https://github.com/VirtoCommerce/vc-module-order/blob/release/3.0.0/samples/VirtoCommerce.OrdersModule2.Web/Repositories/Order2DbContext.cs">the sample</a> for details.</li>
+<li>Create <code>DesignTimeDbContextFactory</code> for the <em>DbContext</em>, just defined in previous step.</li>
+<li><strong><em>Optional:</em></strong> Extend the parent repository interface: add <code>IQueryable&lt;T&gt;</code> property, add additional methods, if needed.</li>
+<li>
+<p>Extend the parent repository by implementing the interface, just defined in previous step. If new interface wasn't defined, override the base methods as needed.</p>
+</li>
+<li>
+<p>Generate code-first DB migration:</p>
+</li>
+<li>Execute "<strong>Set as Startup Project</strong>" on your <strong>"<em>.Data</em>"</strong> project in Solution Explorer</li>
+<li>Open NuGet <strong>Package Manager Console</strong></li>
+<li>Select your "<strong>.Data</strong>" as "<strong>Default project</strong>" in the console</li>
+<li>Run command:
+      <code>console
+      Add-Migration YourNewMigrationName</code>
+      where "<em>YourNewMigrationName</em>" is the name for the migration to add. The new migration files should be generated and opened.</li>
+<li>
+<p>Explore the generated code and <strong>remove</strong> the commands, not reflecting your model changes or configurations defined in your <em>DbContext.OnModelCreating()</em>. These changes were applied already by migrations in base module.</p>
+<p>Ensure, that the <em>Up()</em> method defines:
+  1. the new column(s), if existing tables are being altered, like
+     <code>migrationBuilder.AddColumn&lt;string&gt;(name: "NewField", table: "CustomerOrder", maxLength: 128, nullable: true);</code>
+  1. a <code>Discriminator</code> column (if new columns were defined in previous step AND it didn't exist in the original table already):</p>
+<div class="codehilite"><pre><span></span><code><span class="err"> ```</span>
+<span class="err"> migrationBuilder.AddColumn&lt;string&gt;(name: &quot;Discriminator&quot;, table: &quot;CustomerOrder&quot;, nullable: false, maxLength: 128, defaultValue: &quot;CustomerOrder&quot;);</span>
+<span class="err"> ```</span>
+<span class="err"> Read the [article about inheritance](https://docs.microsoft.com/en-us/ef/core/modeling/inheritance) for more details.</span>
+</code></pre></div>
+
+
+<ol>
+<li>
+<p>new tables and indices, like 
+     ```
+     migrationBuilder.CreateTable(
+              name: "OrderInvoice",
+              ...
+     );</p>
+<p>migrationBuilder.CreateIndex(
+          name: "IX_OrderInvoice_CustomerOrder2Id",
+          table: "OrderInvoice",
+          column: "CustomerOrder2Id");
+ <code>``
+      1. any custom SQL scripts, if data update is needed.
+   1. The _Down()_ method should do the opposite of what _Up()_ does. That way you can apply and un-apply your changes quickly by</code>Update-Database` command in console.</p>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="changes-in-web-project">Changes in "<em>.Web</em>" project</h2>
+<p>The changes regarding the model extension are required in <strong><em>Module.cs</em></strong> file only:</p>
+<ol>
+<li>Changes in <strong><em>Initialize()</em></strong> method:</li>
+<li>Register the new <em>DbContext</em> in DI:
+      <code>serviceCollection.AddDbContext&lt;Order2DbContext&gt;(options =&gt; options.UseSqlServer(configuration.GetConnectionString("VirtoCommerce")));</code></li>
+<li>
+<p>Register the new <em>Repository</em> implementation in DI:
+      <code>serviceCollection.AddTransient&lt;IOrderRepository, OrderRepository2&gt;();</code></p>
+</li>
+<li>
+<p>Changes in <strong><em>PostInitialize()</em></strong> method:</p>
+</li>
+<li>Register type override(s) to AbstractTypeFactory</li>
+<li>Register new type(s) to AbstractTypeFactory (as in usual module)</li>
+<li>
+<p>Add code to ensure that the migrations from new DbContext are applied:
+      <code>using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
+      {
+         var dbContext = serviceScope.ServiceProvider.GetRequiredService&lt;Order2DbContext&gt;();
+         dbContext.Database.EnsureCreated();
+         dbContext.Database.Migrate();
+      }</code></p>
+</li>
+<li>
+<p>Test your changes in  Solution REST API documentation (Swagger) and DB.</p>
+</li>
+</ol>
+<blockquote>
+<p>This tutorial provided the specific steps to take while extending any existing module's model and persistency layer. Also check the <a href="/create-new-module.md">How to create a new module</a> guide for common steps while creating a module.</p>
+</blockquote>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../deploy-module-from-source-code/" title="Deploy Module from source code" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Deploy Module from source code
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../getting-started/" title="Getting started (title from metadata)" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Getting started (title from metadata)
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

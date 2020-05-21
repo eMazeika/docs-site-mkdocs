@@ -1,0 +1,1367 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Lesson 1 - How to deploy and configure Virto Commerce">
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.0">
+    
+    
+      
+        <title>Lesson 1 - How to deploy and configure Virto Commerce</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.18ac144a.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#summary" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="MkLorum" class="md-header-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            MkLorum
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Lesson 1 - How to deploy and configure Virto Commerce
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MkLorum" class="md-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    MkLorum
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Dynamic-Property/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Email-sending-settings/" title="Email sending settings documentation" class="md-nav__link">
+      Email sending settings documentation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Generating%20pdf-file/" title="Pdf-file creation support" class="md-nav__link">
+      Pdf-file creation support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Implementing-authorization-mechanism-using-JWT/" title="Implementing authorization mechanism using Json Web Tokens" class="md-nav__link">
+      Implementing authorization mechanism using Json Web Tokens
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../Migrate-module-from-the-Platform-2.0-to-3.0-version/" title="Update VC Platform Module from version 2.x to version 3" class="md-nav__link">
+      Update VC Platform Module from version 2.x to version 3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../about/" title="Wefwe dfvdv" class="md-nav__link">
+      Wefwe dfvdv
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../code-breaking-changes-included-in-v3/" title="Breaking changes included in VirtoCommerce 3.0" class="md-nav__link">
+      Breaking changes included in VirtoCommerce 3.0
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../connect-storefront-to-platform-v3/" title="Connect Storefront to Platform" class="md-nav__link">
+      Connect Storefront to Platform
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../create-new-module/" title="How to create a new Dummy module" class="md-nav__link">
+      How to create a new Dummy module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deploy-from-precompiled-binaries-linux/" title="Deploy Platform V3 from precompiled binaries on Linux" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deploy-from-precompiled-binaries-windows/" title="Deploy Platform V3 from precompiled binaries on Windows" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Windows
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deploy-from-source-code/" title="Deploy Platform from source code" class="md-nav__link">
+      Deploy Platform from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../deploy-module-from-source-code/" title="Deploy Module from source code" class="md-nav__link">
+      Deploy Module from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../extend-DB-model/" title="How to extend the DB model of VC module (v3)" class="md-nav__link">
+      How to extend the DB model of VC module (v3)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../getting-started/" title="Getting started (title from metadata)" class="md-nav__link">
+      Getting started (title from metadata)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../sharing-bearer-tokens-across-platform-instances/" title="How to sharing bearer tokens across platform instances" class="md-nav__link">
+      How to sharing bearer tokens across platform instances
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../swagger-endpoints/" title="Swagger endpoints" class="md-nav__link">
+      Swagger endpoints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../upgrade-storefront-autorest-cli-to-v3/" title="How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront" class="md-nav__link">
+      How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../using-autorest-with-v3/" title="How to generate AutoRest-generated clients with the Platform v.3" class="md-nav__link">
+      How to generate AutoRest-generated clients with the Platform v.3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../whats-new/" title="Whats new" class="md-nav__link">
+      Whats new
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22" checked>
+    
+    <label class="md-nav__link" for="nav-22">
+      My lessons (custom title)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="My lessons (custom title)" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        My lessons (custom title)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lesson3/" title="Lesson 3 - How to create Virto commerce module (API)" class="md-nav__link">
+      Lesson 3 - How to create Virto commerce module (API)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lesson4/" title="Lessons 4 - How to build and customize platform manager Web UI (AngularJS)" class="md-nav__link">
+      Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Lesson 1 - How to deploy and configure Virto Commerce
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Lesson 1 - How to deploy and configure Virto Commerce" class="md-nav__link md-nav__link--active">
+      Lesson 1 - How to deploy and configure Virto Commerce
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    Video
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-configuration-of-virtocommerce-platform-backend" class="md-nav__link">
+    Initial configuration of VirtoCommerce Platform (backend)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-of-virto-commerce-platform" class="md-nav__link">
+    Setup of Virto Commerce Platform
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup of Virto Commerce Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-connection-strings" class="md-nav__link">
+    Configure connection strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-virto-user-in-sql-server-manager" class="md-nav__link">
+    Create virto user in SQL Server Manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-permissions-for-admin-folder-of-virtocommerce-platform" class="md-nav__link">
+    Configure permissions for admin folder of VirtoCommerce Platform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-iis" class="md-nav__link">
+    Configure IIS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-sign-in" class="md-nav__link">
+    First sign in
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules-auto-installation" class="md-nav__link">
+    Modules auto installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-data-installation" class="md-nav__link">
+    Sample data installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-administrator-password" class="md-nav__link">
+    Change administrator password
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-frontend-password" class="md-nav__link">
+    Change frontend password
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-api-credentials-for-storefront-application" class="md-nav__link">
+    Change API credentials for storefront application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-configuration-of-virtocommerce-storefront-frontend" class="md-nav__link">
+    Initial configuration of VirtoCommerce Storefront (frontend)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-of-virto-commerce-storefront" class="md-nav__link">
+    Setup of Virto Commerce Storefront
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup of Virto Commerce Storefront">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-virtocommerce-platform-endpoint" class="md-nav__link">
+    Configuring VirtoCommerce Platform Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-cms-content-storage" class="md-nav__link">
+    Configure CMS content storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-storefont" class="md-nav__link">
+    Running the Storefont
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the Storefont">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-storefont-by-cli-dotnet-run" class="md-nav__link">
+    Running the Storefont by CLI "dotnet run"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-storefont-by-iis" class="md-nav__link">
+    Running the Storefont by IIS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lesson2/" title="Lesson 2 - How to import new products into Virto Commerce catalog" class="md-nav__link">
+      Lesson 2 - How to import new products into Virto Commerce catalog
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23" type="checkbox" id="nav-23">
+    
+    <label class="md-nav__link" for="nav-23">
+      Modules
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Modules" data-md-level="1">
+      <label class="md-nav__title" for="nav-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23-1" type="checkbox" id="nav-23-1">
+    
+    <label class="md-nav__link" for="nav-23-1">
+      Catalog
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Catalog" data-md-level="2">
+      <label class="md-nav__title" for="nav-23-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Catalog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/catalog/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24" type="checkbox" id="nav-24">
+    
+    <label class="md-nav__link" for="nav-24">
+      Vc2devguide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Vc2devguide" data-md-level="1">
+      <label class="md-nav__title" for="nav-24">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Vc2devguide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vc2devguide/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vc2devguide/system-requirements/" title="System Requirements - Virto Commerce 2 Developer Guide" class="md-nav__link">
+      System Requirements - Virto Commerce 2 Developer Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24-3" type="checkbox" id="nav-24-3">
+    
+    <label class="md-nav__link" for="nav-24-3">
+      Development scenarios
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Development scenarios" data-md-level="2">
+      <label class="md-nav__title" for="nav-24-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Development scenarios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../vc2devguide/development-scenarios/working-with-platform-api/" title="Working with platform API" class="md-nav__link">
+      Working with platform API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    Video
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-configuration-of-virtocommerce-platform-backend" class="md-nav__link">
+    Initial configuration of VirtoCommerce Platform (backend)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-of-virto-commerce-platform" class="md-nav__link">
+    Setup of Virto Commerce Platform
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup of Virto Commerce Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-connection-strings" class="md-nav__link">
+    Configure connection strings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-virto-user-in-sql-server-manager" class="md-nav__link">
+    Create virto user in SQL Server Manager
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-permissions-for-admin-folder-of-virtocommerce-platform" class="md-nav__link">
+    Configure permissions for admin folder of VirtoCommerce Platform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-iis" class="md-nav__link">
+    Configure IIS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-sign-in" class="md-nav__link">
+    First sign in
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules-auto-installation" class="md-nav__link">
+    Modules auto installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-data-installation" class="md-nav__link">
+    Sample data installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-administrator-password" class="md-nav__link">
+    Change administrator password
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-frontend-password" class="md-nav__link">
+    Change frontend password
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-api-credentials-for-storefront-application" class="md-nav__link">
+    Change API credentials for storefront application
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initial-configuration-of-virtocommerce-storefront-frontend" class="md-nav__link">
+    Initial configuration of VirtoCommerce Storefront (frontend)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-of-virto-commerce-storefront" class="md-nav__link">
+    Setup of Virto Commerce Storefront
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup of Virto Commerce Storefront">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuring-virtocommerce-platform-endpoint" class="md-nav__link">
+    Configuring VirtoCommerce Platform Endpoint
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-cms-content-storage" class="md-nav__link">
+    Configure CMS content storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-storefont" class="md-nav__link">
+    Running the Storefont
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the Storefont">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-storefont-by-cli-dotnet-run" class="md-nav__link">
+    Running the Storefont by CLI "dotnet run"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-storefont-by-iis" class="md-nav__link">
+    Running the Storefont by IIS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Lesson 1 - How to deploy and configure Virto Commerce</h1>
+                
+                <h2 id="summary">Summary</h2>
+<p>Use this guide to <a class="crosslink" href="https://virtocommerce.com/ecommerce-hosting" target="_blank">deploy</a> and configure precompiled Virto Commerce Platform (backend) and Virto Commerce Storefront (frontend).</p>
+<h2 id="video">Video</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=oRL2jxv2Knc" target="_blank">Part 1. How to deploy and configure Virto Commerce Platform</a></li>
+<li><a href="https://www.youtube.com/watch?v=QuA1ATgzWwc" target="_blank">Part 2. How to deploy and configure Virto Commerce Storefront</a></li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><a href="https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016">Windows Server 2008 R2 SP1 or later</a></li>
+<li>Enable Internet Information Services. You may use PowerShell command:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">Install-WindowsFeature -name Web-Server -IncludeAllSubFeature</span>
+</code></pre></div>
+
+
+<ul>
+<li><a href="https://www.microsoft.com/en-us/download/details.aspx?id=49981">Microsoft .NET Framework 4.6.1</a></li>
+<li><a href="https://www.microsoft.com/en-us/evalcenter/evaluate-sql-server-2017-rtm">Microsoft SQL Server 2008 or later</a> with SQL Management Studio(free MS SQL Express would be enough)</li>
+<li><a href="https://go.microsoft.com/fwlink/?LinkId=746572">Visual C++ Redistributable Packages for Visual Studio</a></li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites">Prerequisites for .NET Core on Windows</a></li>
+<li><a href="https://dotnet.microsoft.com/download">.NET Core Runtime</a></li>
+</ul>
+<h2 id="initial-configuration-of-virtocommerce-platform-backend">Initial configuration of VirtoCommerce Platform (backend)</h2>
+<p>Navigate to the <a href="https://github.com/VirtoCommerce/vc-platform/releases" rel="nofollow">Releases section of Virto Commerce Platform in GitHub.</a></p>
+<p>You will find and download <strong>VirtoCommerce.Platform.2.x.x.zip</strong> file.</p>
+<p>Unpack follow zip to the web server in IIS application root directory <strong>C:\inetpub\wwwroot\admin</strong>. If there is no <strong>admin</strong> directory inside <strong>wwwroot</strong>, create it manually or with PowerShell commands:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$folder=&quot;C:\inetpub\wwwroot\admin&quot;</span>
+<span class="err">New-Item -ItemType directory -Path $folder -Force</span>
+</code></pre></div>
+
+
+<h2 id="setup-of-virto-commerce-platform">Setup of Virto Commerce Platform</h2>
+<h3 id="configure-connection-strings">Configure connection strings</h3>
+<ul>
+<li>Open the <strong>C:\inetpub\wwwroot\admin\Web.config</strong> file in a text editor.</li>
+<li>In the <strong>connectionStrings</strong> section find the <strong>add</strong> node:</li>
+</ul>
+<p><strong>VirtoCommerce</strong>: parameters for  SQL server database. Change (local) to IP address of your SQL Server. For locally running instance   SQL Express set <strong>Data Source=.\SQLEXPRESS</strong>.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">  &lt;add name=&quot;VirtoCommerce&quot; connectionString=&quot;Data Source=(local);Initial Catalog=VirtoCommerce2;Persist Security Info=True;User       ID=virto;Password=virto;MultipleActiveResultSets=True;Connect Timeout=420&quot; providerName=&quot;System.Data.SqlClient&quot; /&gt;</span>
+</code></pre></div>
+
+
+<h3 id="create-virto-user-in-sql-server-manager">Create virto user in SQL Server Manager</h3>
+<ul>
+<li>Open SQL Server Manager and connect to the local sql server on Database Engine. Add to Security/Logins new login name virto with password virto, give him in Server Roles dbcreator and public roles.</li>
+</ul>
+<h3 id="configure-permissions-for-admin-folder-of-virtocommerce-platform">Configure permissions for admin folder of VirtoCommerce Platform</h3>
+<p>Open properties for <strong>C:\inetpub\wwwroot\admin</strong> folder and give permission <strong>Modify</strong> to <strong>IIS_IUSRS</strong> user group.</p>
+<p><img alt="Setting admin folder security options" src="../../assets/images/docs/iis_iusrs-rights-on-admin-folder.png" title="Setting admin folder security options" /></p>
+<p>The same can be done with PowerShell commands:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$acl = Get-Acl $folder</span>
+<span class="err">$acl.SetAccessRuleProtection($True, $True)</span>
+<span class="err">Set-Acl -Path $folder -AclObject $acl</span>
+<span class="err">$permission = &quot;BUILTIN\IIS_IUSRS&quot;,&quot;Modify, Synchronize&quot;, &quot;ContainerInherit, ObjectInherit&quot;, &quot;None&quot;, &quot;Allow&quot;</span>
+<span class="err">$accessRule = New-Object System.Security.AccessControl.FileSystemAccessRule $permission</span>
+<span class="err">$acl.SetAccessRule($accessRule)</span>
+<span class="err">$acl | Set-Acl $folder</span>
+</code></pre></div>
+
+
+<h3 id="configure-iis">Configure IIS</h3>
+<ul>
+<li>Open the <strong>IIS Manager</strong> and create a new application named <strong>admin</strong> inside an existing <strong>Default Web Site</strong>.</li>
+<li>In the <strong>Physical path</strong> field enter the full path to the platform site data folder <strong>C:\inetpub\wwwroot\admin</strong>.</li>
+</ul>
+<p><img alt="Website configuration in IIS" src="../../assets/images/docs/add-admin-application-binaries.png" title="Website configuration in IIS" /></p>
+<ul>
+<li>Select application pool named DefaultAppPool which uses <strong>.NET CLR Version 4.0</strong> and <strong>Integrated</strong> pipeline mode.</li>
+<li>Inside the admin application add the new virtual directory with alias <strong>assets</strong> and physical path <strong>C:\inetpub\wwwroot\admin\App_Data\Assets</strong>. If there is no <strong>Assets</strong> directory inside <strong>App_Data</strong>, create it manually or with PowerShell commands:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">$folder=&quot;C:\inetpub\wwwroot\admin\App_Data\Assets&quot;</span>
+<span class="err">New-Item -ItemType directory -Path $folder -Force</span>
+</code></pre></div>
+
+
+<p><img alt="Create a virtual folder for Virto Commerce Platform assets" src="../../assets/images/docs/create-platform-assets-virtual-folder-binaries.png" title="Create a virtual folder for Virto Commerce Platform assets" /></p>
+<h2 id="first-sign-in">First sign in</h2>
+<ul>
+<li>Open the Virto Commerce Platform application in the browser - in  the <strong>IIS Manager</strong> select <strong>admin</strong> and click on right column to "Browse *:80(http)".</li>
+<li><strong>On the first request the application will create and initialize Virtocommerce2 database</strong>. Wait a minute...</li>
+<li>After that you should see the sign in page.</li>
+</ul>
+<p><img alt="Sign in page" src="../../assets/images/docs/platform-first-sign-in-page.png" title="Sign in page" /></p>
+<ul>
+<li>Use the following credentials:</li>
+<li>Login: <strong>admin</strong>.</li>
+<li>Password: <strong>store</strong>.</li>
+</ul>
+<h2 id="modules-auto-installation">Modules auto installation</h2>
+<ul>
+<li>Next step - platform modules auto installation, after that you should click the <strong>Restart</strong> button.</li>
+</ul>
+<p><img alt="Modules auto installation page" src="../../assets/images/docs/modules-auto-installation-page.png" title="Modules auto installation page" /></p>
+<h2 id="sample-data-installation">Sample data installation</h2>
+<ul>
+<li>After restart you should see next page with possibillity to sample data installation (you should choose <strong>Closing and Electronics</strong> option - new products would be added to your <strong>Virtocommerce2</strong> database).</li>
+</ul>
+<p><img alt="Sample data installation page" src="../../assets/images/docs/sample-data-installation-page.png" title="Sample data installation page" /></p>
+<h2 id="change-administrator-password">Change administrator password</h2>
+<p>After <strong>Sample data installation</strong> step completed user is forced to change the password.</p>
+<p><img alt="Password reset" src="../../assets/images/docs/password-reset.png" title="Password reset" /></p>
+<h2 id="change-frontend-password">Change frontend password</h2>
+<ul>
+<li>In the left menu select <strong>More &gt; Configuration &gt; Security</strong>.</li>
+<li>Select <strong>Users</strong>.</li>
+<li>Select the <strong>frontend</strong> user.</li>
+<li>Click <strong>Change password</strong>.</li>
+<li>Enter the new password twice and click <strong>OK</strong>.</li>
+</ul>
+<h2 id="change-api-credentials-for-storefront-application">Change API credentials for storefront application</h2>
+<ul>
+<li>In the left menu select <strong>More &gt; Configuration &gt; Security</strong>.</li>
+<li>Select <strong>Users</strong>.</li>
+<li>Select the <strong>frontend</strong> user.</li>
+<li>Click the <strong>API Keys</strong> widget.</li>
+<li>Select the <strong>Frontend Hmac</strong> key.</li>
+<li>Click <strong>Generate</strong>, then <strong>OK</strong>, then <strong>Save</strong>.</li>
+</ul>
+<h2 id="initial-configuration-of-virtocommerce-storefront-frontend">Initial configuration of VirtoCommerce Storefront (frontend)</h2>
+<p>Navigate to the <a href="https://github.com/VirtoCommerce/vc-storefront-core/releases">Releases section of Virto Commerce Storefront in GitHub.</a></p>
+<p>You will find and download <strong>VirtoCommerce.Storefront.4.x.x.zip</strong> file.</p>
+<p>Create new folder named <strong>C:\vc-storefront-core</strong> manually or with PowerShell commands:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$folder=&quot;C:\vc-storefront-core&quot;</span>
+<span class="err">New-Item -ItemType directory -Path $folder -Force</span>
+</code></pre></div>
+
+
+<p>and unpack this zip file to this folder of web server.</p>
+<h2 id="setup-of-virto-commerce-storefront">Setup of Virto Commerce Storefront</h2>
+<h3 id="configuring-virtocommerce-platform-endpoint">Configuring VirtoCommerce Platform Endpoint</h3>
+<ul>
+<li>Open the <strong>C:\vc-storefront-core\appsettings.json</strong> in a text editor.</li>
+<li>In the <strong>VirtoCommerce</strong> section find the node named <strong>Endpoint</strong>. Make sure that its <strong>Url</strong> attribute value is <strong>http://localhost/admin</strong>.</li>
+<li>Make sure that <strong>AppId</strong> and <strong>SecretKey</strong> attributes values is set to the values obtained earlier in the <strong>Change API credentials for storefront application</strong> step.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">...</span>
+<span class="err">&quot;VirtoCommerce&quot;: {</span>
+<span class="err">    &quot;Endpoint&quot;: {</span>
+<span class="err">        //Virto Commerce platform manager url</span>
+<span class="err">        &quot;Url&quot;: &quot;http://localhost/admin&quot;,</span>
+<span class="err">        //HMAC authentification user credentials on whose behalf the API calls will be made.</span>
+<span class="err">        &quot;AppId&quot;: &quot;Enter your AppId here&quot;,</span>
+<span class="err">        &quot;SecretKey&quot;: &quot;Enter your SecretKey here&quot;,</span>
+<span class="err">    }</span>
+<span class="err">...</span>
+</code></pre></div>
+
+
+<h3 id="configure-cms-content-storage">Configure CMS content storage</h3>
+<ul>
+<li>Open the <strong>appsettings.json</strong> in a text editor.</li>
+<li>In the <strong>ConnectionStrings</strong> section find the attribute named <strong>ContentConnectionString</strong>. Make sure that its rootPath value is <strong>~/App_Data/cms-content</strong>.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">...</span>
+<span class="err">&quot;ConnectionStrings&quot;: {</span>
+<span class="err">    //For themes stored in local file system</span>
+<span class="err">    &quot;ContentConnectionString&quot;: &quot;provider=LocalStorage;rootPath=~/cms-content&quot;</span>
+<span class="err">  }</span>
+<span class="err">...</span>
+</code></pre></div>
+
+
+<p>Platform already contains <code>~/App_Data/cms-content</code> folder with themes for sample stores it was configured earlier in the <strong>Configure IIS</strong> step
+You need to make symbolic link to this folder by this command:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">mklink /d C:\vc-storefront-core\wwwroot\cms-content C:\inetpub\wwwroot\admin\App_Data\cms-content</span>
+</code></pre></div>
+
+
+<h3 id="running-the-storefont">Running the Storefont</h3>
+<p>There are 2 options for launching the application:</p>
+<ul>
+<li>Running the Storefont by CLI "dotnet run".</li>
+<li>Deploying the Storefont to IIS.</li>
+</ul>
+<h4 id="running-the-storefont-by-cli-dotnet-run">Running the Storefont by CLI "dotnet run"</h4>
+<ul>
+<li>Open command prompt console.</li>
+<li>Change working directory to the <strong>C:\vc-storefront-core</strong>.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">cd C:\vc-storefront-core</span>
+</code></pre></div>
+
+
+<ul>
+<li>Run the Storefront by following command:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">dotnet.exe C:\vc-storefront-core\VirtoCommerce.Storefront.dll</span>
+</code></pre></div>
+
+
+<p>The output in the console will say something like:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">Now listening on: http://localhost:5000</span>
+</code></pre></div>
+
+
+<h4 id="running-the-storefont-by-iis">Running the Storefont by IIS</h4>
+<ul>
+<li>Restart IIS service.</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">net stop was /y</span>
+<span class="err">net start w3svc</span>
+</code></pre></div>
+
+
+<ul>
+<li>Open <em>IIS Manager</em> and add a new Website named <strong>Storefront</strong>.</li>
+<li>Select application pool named <strong>DefaultAppPool</strong>.</li>
+<li>In the Physical path field enter the full path to the storefront folder <strong>C:\vc-storefront-core</strong>.</li>
+<li>In the Port field enter the new Web site port binding <strong>8080</strong>.</li>
+</ul>
+<p><img alt="Add new website" src="../../assets/images/docs/add-new-web-site.png" title="Add new website" /></p>
+<p>Now you could first open the local <strong>VirtoCommerce Storefront</strong> instance for the first time.
+Navigate to:</p>
+<ul>
+<li>http://localhost:5000 if the application deployed by "dotnet run";</li>
+<li>or http://localhost:8080 in case IIS.</li>
+</ul>
+<p><img alt="First storefront page" src="../../assets/images/docs/storefront.png" title="First storefront page" /></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../lesson4/" title="Lessons 4 - How to build and customize platform manager Web UI (AngularJS)" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../lesson2/" title="Lesson 2 - How to import new products into Virto Commerce catalog" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Lesson 2 - How to import new products into Virto Commerce catalog
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

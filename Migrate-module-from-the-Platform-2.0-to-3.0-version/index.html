@@ -1,0 +1,1342 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.0">
+    
+    
+      
+        <title>Update VC Platform Module from version 2.x to version 3 - MkLorum</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.18ac144a.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#update-vc-platform-module-from-version-2x-to-version-3" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="MkLorum" class="md-header-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            MkLorum
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Update VC Platform Module from version 2.x to version 3
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MkLorum" class="md-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    MkLorum
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Dynamic-Property/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Email-sending-settings/" title="Email sending settings documentation" class="md-nav__link">
+      Email sending settings documentation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Generating%20pdf-file/" title="Pdf-file creation support" class="md-nav__link">
+      Pdf-file creation support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Implementing-authorization-mechanism-using-JWT/" title="Implementing authorization mechanism using Json Web Tokens" class="md-nav__link">
+      Implementing authorization mechanism using Json Web Tokens
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Update VC Platform Module from version 2.x to version 3
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Update VC Platform Module from version 2.x to version 3" class="md-nav__link md-nav__link--active">
+      Update VC Platform Module from version 2.x to version 3
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-before-the-update" class="md-nav__link">
+    0. Before the update
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequisites" class="md-nav__link">
+    1. Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-make-correct-structure-in-solution-and-projects" class="md-nav__link">
+    2. Make correct structure in solution and projects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-make-changes-in-customerreviewscore-project" class="md-nav__link">
+    3. Make changes in CustomerReviews.Core project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-make-changes-in-customerreviewsdata-project" class="md-nav__link">
+    4. Make changes in CustomerReviews.Data project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-make-changes-in-customerreviewsweb-project" class="md-nav__link">
+    5. Make changes in CustomerReviews&#46;Web project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-make-changes-in-customerreviewstests-project" class="md-nav__link">
+    6. Make changes in CustomerReviews.Tests project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-create-module-package" class="md-nav__link">
+    7. Create module package
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../about/" title="Wefwe dfvdv" class="md-nav__link">
+      Wefwe dfvdv
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../code-breaking-changes-included-in-v3/" title="Breaking changes included in VirtoCommerce 3.0" class="md-nav__link">
+      Breaking changes included in VirtoCommerce 3.0
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../connect-storefront-to-platform-v3/" title="Connect Storefront to Platform" class="md-nav__link">
+      Connect Storefront to Platform
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../create-new-module/" title="How to create a new Dummy module" class="md-nav__link">
+      How to create a new Dummy module
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-precompiled-binaries-linux/" title="Deploy Platform V3 from precompiled binaries on Linux" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-precompiled-binaries-windows/" title="Deploy Platform V3 from precompiled binaries on Windows" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Windows
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-source-code/" title="Deploy Platform from source code" class="md-nav__link">
+      Deploy Platform from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-module-from-source-code/" title="Deploy Module from source code" class="md-nav__link">
+      Deploy Module from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../extend-DB-model/" title="How to extend the DB model of VC module (v3)" class="md-nav__link">
+      How to extend the DB model of VC module (v3)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting started (title from metadata)" class="md-nav__link">
+      Getting started (title from metadata)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sharing-bearer-tokens-across-platform-instances/" title="How to sharing bearer tokens across platform instances" class="md-nav__link">
+      How to sharing bearer tokens across platform instances
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../swagger-endpoints/" title="Swagger endpoints" class="md-nav__link">
+      Swagger endpoints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../upgrade-storefront-autorest-cli-to-v3/" title="How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront" class="md-nav__link">
+      How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../using-autorest-with-v3/" title="How to generate AutoRest-generated clients with the Platform v.3" class="md-nav__link">
+      How to generate AutoRest-generated clients with the Platform v.3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../whats-new/" title="Whats new" class="md-nav__link">
+      Whats new
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      My lessons (custom title)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="My lessons (custom title)" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        My lessons (custom title)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson3/" title="Lesson 3 - How to create Virto commerce module (API)" class="md-nav__link">
+      Lesson 3 - How to create Virto commerce module (API)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson4/" title="Lessons 4 - How to build and customize platform manager Web UI (AngularJS)" class="md-nav__link">
+      Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson1/" title="Lesson 1 - How to deploy and configure Virto Commerce" class="md-nav__link">
+      Lesson 1 - How to deploy and configure Virto Commerce
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson2/" title="Lesson 2 - How to import new products into Virto Commerce catalog" class="md-nav__link">
+      Lesson 2 - How to import new products into Virto Commerce catalog
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23" type="checkbox" id="nav-23">
+    
+    <label class="md-nav__link" for="nav-23">
+      Modules
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Modules" data-md-level="1">
+      <label class="md-nav__title" for="nav-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23-1" type="checkbox" id="nav-23-1">
+    
+    <label class="md-nav__link" for="nav-23-1">
+      Catalog
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Catalog" data-md-level="2">
+      <label class="md-nav__title" for="nav-23-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Catalog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../modules/catalog/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24" type="checkbox" id="nav-24">
+    
+    <label class="md-nav__link" for="nav-24">
+      Vc2devguide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Vc2devguide" data-md-level="1">
+      <label class="md-nav__title" for="nav-24">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Vc2devguide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/system-requirements/" title="System Requirements - Virto Commerce 2 Developer Guide" class="md-nav__link">
+      System Requirements - Virto Commerce 2 Developer Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24-3" type="checkbox" id="nav-24-3">
+    
+    <label class="md-nav__link" for="nav-24-3">
+      Development scenarios
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Development scenarios" data-md-level="2">
+      <label class="md-nav__title" for="nav-24-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Development scenarios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/development-scenarios/working-with-platform-api/" title="Working with platform API" class="md-nav__link">
+      Working with platform API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0-before-the-update" class="md-nav__link">
+    0. Before the update
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-prerequisites" class="md-nav__link">
+    1. Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-make-correct-structure-in-solution-and-projects" class="md-nav__link">
+    2. Make correct structure in solution and projects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-make-changes-in-customerreviewscore-project" class="md-nav__link">
+    3. Make changes in CustomerReviews.Core project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-make-changes-in-customerreviewsdata-project" class="md-nav__link">
+    4. Make changes in CustomerReviews.Data project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-make-changes-in-customerreviewsweb-project" class="md-nav__link">
+    5. Make changes in CustomerReviews&#46;Web project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-make-changes-in-customerreviewstests-project" class="md-nav__link">
+    6. Make changes in CustomerReviews.Tests project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-create-module-package" class="md-nav__link">
+    7. Create module package
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="update-vc-platform-module-from-version-2x-to-version-3">Update VC Platform Module from version 2.x to version 3</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This article describes how to update an existing <a href="https://github.com/VirtoCommerce/vc-samples/tree/master/CustomerReviews">CustomerReviews sample</a> module from VC Platform version 2.x to 3.0.</p>
+<blockquote>
+<p>NOTE: A sample module source code can be found here: https://github.com/VirtoCommerce/vc-samples/tree/release/3.0.0/CustomerReviews.</p>
+</blockquote>
+<h2 id="0-before-the-update">0. Before the update</h2>
+<ol>
+<li>Only update from the latest VC v2.x versions is supported. Ensure that the latest v2 versions of the Platform and all modules are installed.</li>
+<li>Usually, you have more than one custom VC module. Create a <strong>dependency map</strong> between your and the VC modules <strong>before the update</strong>. That helps to update the modules smoothly.</li>
+<li>Ensure that all your <strong>unit tests are current</strong> and passing</li>
+<li>In case of any question or issue, submit a new topic to <a href="https://community.virtocommerce.com/c/bug/11">Virto Commerce Community</a></li>
+<li>Please read the <a href="https://github.com/VirtoCommerce/vc-platform/blob/release/3.0.0/docs/code-breaking-changes-included-in-v3.md">The list of code breaking changes included in 3.0</a></li>
+</ol>
+<h2 id="1-prerequisites">1. Prerequisites</h2>
+<ol>
+<li>Visual Studio 2019 (v16.4 or later)</li>
+</ol>
+<h2 id="2-make-correct-structure-in-solution-and-projects">2. Make correct structure in solution and projects</h2>
+<ol>
+<li>Open the folder of selected v2 module in file manager (e.g., Windows Explorer).</li>
+<li>If exists, delete <strong><em>packages</em></strong> folder.</li>
+<li>Delete <strong>Properties</strong> folder from each of the projects' folder.</li>
+<li>Convert the projects from ASP&#46;NET to ASP&#46;NET Core:</li>
+<li>
+<p>Open <strong><em>*.csproj</em></strong> file of <strong><em>CustomerReviews&#46;Web</em></strong> project in text editor (e.g., Notepad), clear whole file content and set it to this:</p>
+<div class="codehilite"><pre><span></span><code>```xml
+<span class="nt">&lt;Project</span> <span class="na">Sdk=</span><span class="s">&quot;Microsoft.NET.Sdk.Web&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;PropertyGroup&gt;</span>
+        <span class="nt">&lt;TargetFramework&gt;</span>netcoreapp3.1<span class="nt">&lt;/TargetFramework&gt;</span>
+        <span class="nt">&lt;OutputType&gt;</span>Library<span class="nt">&lt;/OutputType&gt;</span>
+    <span class="nt">&lt;/PropertyGroup&gt;</span>
+    <span class="nt">&lt;ItemGroup&gt;</span>
+        <span class="nt">&lt;Compile</span> <span class="na">Remove=</span><span class="s">&quot;dist\**&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;EmbeddedResource</span> <span class="na">Remove=</span><span class="s">&quot;dist\**&quot;</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;None</span> <span class="na">Remove=</span><span class="s">&quot;dist\**&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ItemGroup&gt;</span>
+<span class="nt">&lt;/Project&gt;</span>
+```
+</code></pre></div>
+
+
+</li>
+<li>
+<p>Replace all other <strong><em>*.csproj</em></strong> files' content with this:</p>
+<div class="codehilite"><pre><span></span><code>```xml
+<span class="nt">&lt;Project</span> <span class="na">Sdk=</span><span class="s">&quot;Microsoft.NET.Sdk&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;PropertyGroup&gt;</span>
+        <span class="nt">&lt;TargetFramework&gt;</span>netcoreapp3.1<span class="nt">&lt;/TargetFramework&gt;</span>
+    <span class="nt">&lt;/PropertyGroup&gt;</span>
+<span class="nt">&lt;/Project&gt;</span>
+```
+</code></pre></div>
+
+
+</li>
+<li>
+<p>Read <a href="https://docs.microsoft.com/en-us/aspnet/core/migration/30-to-31">this article</a> for more info.</p>
+</li>
+<li>Create <strong><em>src</em></strong> and <strong><em>tests</em></strong> subfolders in module's root folder (Windows Explorer)</li>
+<li>Move <strong><em>CustomerReviews.Core</em></strong>, <strong><em>CustomerReviews.Data</em></strong>, <strong><em>CustomerReviews&#46;Web</em></strong> projects to <strong><em>src</em></strong></li>
+<li>Move <strong><em>CustomerReviews.Test</em></strong> project to <strong><em>tests</em></strong></li>
+<li>Open <strong><em>CustomerReviews.sln</em></strong> solution in Visual Studio</li>
+<li>Remove all projects from the solution</li>
+<li>Add <strong><em>src</em></strong> and <strong><em>tests</em></strong> Solution Folders</li>
+<li>Add the existing <strong><em>CustomerReviews.Core</em></strong>, <strong><em>CustomerReviews.Data</em></strong>, <strong><em>CustomerReviews&#46;Web</em></strong> projects to <strong><em>src</em></strong> folder</li>
+<li>Add the existing <strong><em>CustomerReviews.Test</em></strong> project to <strong><em>tests</em></strong> folder</li>
+<li>Remove all files related to .NET Framework 4.x in <strong>every project</strong>:<ul>
+<li><strong>App.config</strong></li>
+<li><strong>packages.config</strong></li>
+<li><strong>Web.config</strong>, <strong>Web.Debug.config</strong>, <strong>Web.Release.config</strong>, <strong>module.ignore</strong></li>
+<li>if exists, delete <strong>CommonAssemblyInfo.cs</strong> </li>
+</ul>
+</li>
+<li>Add references to projects:<ol>
+<li><strong>CustomerReviews.Data</strong>: add reference to CustomerReviews.Core project</li>
+<li><strong>CustomerReviews&#46;Web</strong>: add references to CustomerReviews.Core, CustomerReviews.Data projects</li>
+<li><strong>CustomerReviews.Tests</strong>: add references to CustomerReviews.Core, CustomerReviews.Data, CustomerReviews&#46;Web projects</li>
+</ol>
+</li>
+<li>References to NuGet packages:<ol>
+<li><strong>CustomerReviews.Core</strong>: add reference to the latest version <strong><em>VirtoCommerce.Platform.Core</em></strong> package.</li>
+<li><strong>CustomerReviews.Data</strong>: add reference to the latest version <strong><em>VirtoCommerce.Platform.Data</em></strong> package.</li>
+</ol>
+</li>
+<li>Add other NuGet dependency packages, if any exists in <strong><em>module.manifest</em></strong>.</li>
+</ol>
+<h2 id="3-make-changes-in-customerreviewscore-project">3. Make changes in CustomerReviews.Core project</h2>
+<ol>
+<li>
+<p>If missing, add class <strong><em>ModuleConstants.cs</em></strong> for module constants:</p>
+<ol>
+<li>Inside <strong><em>ModuleConstants</em></strong> add sub-classes <strong><em>Security</em></strong> and <strong><em>Permissions</em></strong></li>
+<li>Add sub-classes <strong><em>Settings</em></strong> and <strong><em>General</em></strong> containing settings' definitions of type <strong><em>SettingDescriptor</em></strong>. Move settings definitions from module.manifest to this class
+    &gt; Follow the structure as defined in <a href="https://github.com/VirtoCommerce/vc-module-customer/tree/release/3.0.0/src/VirtoCommerce.CustomerModule.Core/ModuleConstants.cs">ModuleConstants.cs in CustomerModule</a>.</li>
+<li>Other constants.</li>
+</ol>
+</li>
+<li>
+<p>Update <strong>ICustomerReviewService.cs</strong>:</p>
+<ul>
+<li>Refactor all methods to <strong>be asynchronous</strong>: return <code>Task&lt;&gt;</code></li>
+<li>Rename all methods to have suffix <code>Async</code></li>
+</ul>
+</li>
+<li>
+<p>If there is a search service defined:</p>
+<ol>
+<li>Move <strong><em>CustomerReviewSearchCriteria</em></strong> class to <strong>Search</strong> sub-folder;</li>
+<li>Ensure, that CustomerReviewSearchCriteria inherits from <code>SearchCriteriaBase</code>; </li>
+<li>Create <strong><em>CustomerReviewSearchResult</em></strong> class in <strong>Search</strong> sub-folder;</li>
+<li>Ensure, that CustomerReviewSearchResult inherits from <code>GenericSearchResult&lt;CustomerReview&gt;</code>.</li>
+<li>Refactor <strong><em>ICustomerReviewSearchService</em></strong> to use CustomerReviewSearchResult, all methods be asynchronous, and end with <strong>Async</strong>: </li>
+</ol>
+<p><code>cs
+public interface ICustomerReviewSearchService
+{
+    Task&lt;CustomerReviewSearchResult&gt; SearchCustomerReviewsAsync(CustomerReviewSearchCriteria criteria);
+}</code></p>
+</li>
+<li>
+<p>If any model-related changing/changed events were defined in <strong>Events</strong> folder, ensure that each of them derive from the base <code>GenericChangedEntryEvent</code> class.</p>
+</li>
+<li>
+<p>If any custom Notifications were added to <strong>Notifications</strong> folder:</p>
+<ol>
+<li>Add reference to NuGet <strong>VirtoCommerce.NotificationsModule.Core</strong> package;</li>
+<li>Ensure that each defined Notification class inherits from <strong><em>EmailNotification</em></strong>/<strong><em>SmsNotification</em></strong> or own class, based on <strong><em>Notification</em></strong>.</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-make-changes-in-customerreviewsdata-project">4. Make changes in CustomerReviews.Data project</h2>
+<ol>
+<li>
+<p><strong>Repositories</strong> folder</p>
+<ol>
+<li>
+<p>Create <strong>CustomerReviewsDbContext.cs</strong></p>
+<ul>
+<li>Add new class <strong><em>CustomerReviewsDbContext</em></strong></li>
+<li>Make it public and derive from <code>DbContextWithTriggers</code></li>
+<li>Add 2 constructors, using <a href="https://github.com/VirtoCommerce/vc-module-customer/blob/release/3.0.0/src/VirtoCommerce.CustomerModule.Data/Repositories/CustomerDbContext.cs">CustomerDbContext</a> as an example.<blockquote>
+<p>NOTE: 1 constructor is <strong>public</strong> and another is <strong>protected</strong>.</p>
+</blockquote>
+</li>
+<li>
+<p>Override <em>OnModelCreating</em> method, add <strong>CustomerReviewEntity</strong> mapping to modelBuilder and set max length to Id:</p>
+<p><code>cs
+modelBuilder.Entity&lt;CustomerReviewEntity&gt;().ToTable("CustomerReview").HasKey(x =&gt; x.Id);
+modelBuilder.Entity&lt;CustomerReviewEntity&gt;().Property(x =&gt; x.Id).HasMaxLength(128).ValueGeneratedOnAdd();</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Create <strong>DesignTimeDbContextFactory.cs</strong>
+    &gt; NOTE: a factory for creating derived Microsoft.EntityFrameworkCore.DbContext instances.</p>
+<ul>
+<li>Add new class <strong><em>DesignTimeDbContextFactory</em></strong> </li>
+<li>Make it public and derive from <code>IDesignTimeDbContextFactory&lt;CustomerReviewsDbContext&gt;</code></li>
+<li>Implement <strong><em>CreateDbContext</em></strong> method, using <a href="https://github.com/VirtoCommerce/vc-module-customer/blob/release/3.0.0/src/VirtoCommerce.CustomerModule.Data/Repositories/DesignTimeDbContextFactory.cs">CustomerModule.Data/Repositories/DesignTimeDbContextFactory.cs</a> as an example</li>
+<li>Ensure that connection string to your development SQL Server in <strong><em>UseSqlServer</em></strong> method is correct. It would be used while generating code-first migrations. </li>
+</ul>
+</li>
+<li>Update <strong>ICustomerReviewsRepository.cs</strong><ul>
+<li>If the module is an extension then derive from derived module's interface repository.</li>
+<li>Refactor all methods to <strong>be asynchronous</strong>: return <code>Task&lt;&gt;</code></li>
+<li>Rename all methods to have suffix <code>Async</code></li>
+</ul>
+</li>
+<li>
+<p>Update <strong>CustomerReviewsRepository.cs</strong></p>
+<ul>
+<li>Refactor <strong><em>CustomerReviewsRepository</em></strong> class to derive from <code>DbContextRepositoryBase&lt;CustomerReviewsDbContext&gt;</code> or if the module is an extension then derive from derived module's repository.</li>
+<li>Refactor the constructors to leave only one, taking the only  <strong><em>CustomerReviewsDbContext</em></strong> parameter:</li>
+</ul>
+<p><code>cs
+public CustomerReviewRepository(CustomerReviewsDbContext dbContext) : base(dbContext)
+{
+}</code></p>
+<ul>
+<li>Refactor <strong><em>CustomerReviews</em></strong> property to access data using DbSet like this:</li>
+</ul>
+<p><code>cs
+public IQueryable&lt;CustomerReviewEntity&gt; CustomerReviews =&gt; DbContext.Set&lt;CustomerReviewEntity&gt;();</code></p>
+<ul>
+<li>Remove <strong><em>OnModelCreating</em></strong> method</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Caching</strong> folder</p>
+<ol>
+<li>If missing, create <strong>Caching</strong> folder. This folder is for the cache region classes. Typically, each model should have its own region.</li>
+<li>Derive CacheRegion from generic <code>CancellableCacheRegion&lt;T&gt;</code> class:</li>
+</ol>
+<p><code>cs
+public class CustomerReviewCacheRegion : CancellableCacheRegion&lt;CustomerReviewCacheRegion&gt;
+{
+}</code></p>
+</li>
+<li>
+<p><strong>Services</strong> folder</p>
+<ol>
+<li>All services: remove inheritance from <strong>ServiceBase</strong></li>
+<li>Ensure that the signatures of the methods matches the ones defined in the corresponding interfaces</li>
+<li>Change response to <code>Task&lt;CustomerReviewSearchResult&gt;</code> in <strong><em>CustomerReviewSearchService</em></strong> service</li>
+<li>Refactor all methods to <strong>be asynchronous</strong></li>
+<li>Add working with cache to all methods<blockquote>
+<p>check this example for more details <a href="https://github.com/VirtoCommerce/vc-module-customer/tree/release/3.0.0/src/VirtoCommerce.CustomerModule.Data/Services">VirtoCommerce.CustomerModule.Data.Services</a>.</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Migrations</strong> folder</p>
+<ol>
+<li>
+<p>Create <strong><em>InitialCustomerReviews</em></strong> migration</p>
+<ol>
+<li>Delete everything (all migrations and Configuration.cs) from <strong><em>Migrations</em></strong> folder</li>
+<li>Execute "<strong>Set as Startup Project</strong>" on CustomerReviews.<strong>Data</strong> project in Solution Explorer</li>
+<li>Open NuGet <strong>Package Manager Console</strong></li>
+<li>Select "src\CustomerReviews.<strong>Data</strong>" as "<strong>Default project</strong>"</li>
+<li>
+<p>Run command:</p>
+<p><code>console
+Add-Migration InitialCustomerReviews -Verbose</code></p>
+</li>
+<li>
+<p>In case of any existing module's extension is developed, study and follow the steps from <a href="../extend-DB-model/">How to extend the DB model of VC module</a> guide.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Create Migration for backward compatibility with v2.x</p>
+<ol>
+<li>Add new migration with name <strong><em>UpdateCustomerReviewsV2</em></strong> and rename the migration <strong><em>filename</em></strong> to <strong><em>20000000000000_UpdateCustomerReviewsV2</em></strong></li>
+<li>Add SQL command to the migration:</li>
+</ol>
+<p><code>cs
+migrationBuilder.Sql(@"IF (EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = '__MigrationHistory'))
+        IF (EXISTS (SELECT * FROM __MigrationHistory WHERE ContextKey = 'CustomerReviews.Data.Migrations.Configuration'))
+            BEGIN
+                INSERT INTO [dbo].[__EFMigrationsHistory] ([MigrationId],[ProductVersion]) VALUES ('20191129134041_InitialCustomerReviews', '2.2.3-servicing-35854')
+            END");</code></p>
+<blockquote>
+<p>Note: the <code>ContextKey</code> value has to be constructed as "{ModuleId}.Data.Migrations.Configuration".</p>
+<p>Note2: the value for <code>MigrationId</code> has to be the name of your new migration, added in previous step. ('20191129134041_InitialCustomerReviews' in our case). Check <a href="https://github.com/VirtoCommerce/vc-module-core/tree/release/3.0.0/src/VirtoCommerce.CoreModule.Data/Migrations/20000000000000_UpdateCoreV2.cs#L12">20000000000000_UpdateCoreV2.cs migration</a> as another example.</p>
+<p>Note3: value for <code>ProductVersion</code> should be taken from <strong><em>20000000000000_UpdateCustomerReviewsV2.Designer</em></strong> line 19:
+<code>cs
+.HasAnnotation("ProductVersion", "2.2.3-servicing-35854")</code></p>
+</blockquote>
+<ol>
+<li>Open <strong><em>20000000000000_UpdateCustomerReviewsV2.Designer</em></strong> and change <strong><em>Migration</em></strong> attribute parameter value to the current migration ID ("20000000000000_UpdateCustomerReviewsV2" in this case). Check <a href="https://github.com/VirtoCommerce/vc-module-core/tree/release/3.0.0/src/VirtoCommerce.CoreModule.Data/Migrations/20000000000000_UpdateCoreV2.Designer.cs#L12">20000000000000_UpdateCoreV2.Designer.cs</a> as another example.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>If Dynamic Properties are used in the module, follow the steps in <a href="../Dynamic-Property/">Dynamic Property guide</a>.</p>
+</li>
+</ol>
+<h2 id="5-make-changes-in-customerreviewsweb-project">5. Make changes in CustomerReviews&#46;Web project</h2>
+<ol>
+<li>
+<p>Changes in <strong><em>module.manifest</em></strong></p>
+<ol>
+<li>Versioning - increase module version and add prerelease tag (empty value for a release version):</li>
+</ol>
+<p><code>xml
+&lt;version&gt;3.0.0&lt;/version&gt;
+&lt;version-tag&gt;&lt;/version-tag&gt;</code></p>
+</li>
+<li>
+<p>Required minimal version of VC Platform:</p>
+<p><code>xml
+&lt;platformVersion&gt;3.0.0&lt;/platformVersion&gt;</code></p>
+</li>
+<li>
+<p>Module dependencies - change to actual versions:</p>
+<p><code>xml
+&lt;dependencies&gt;
+    &lt;dependency id="VirtoCommerce.Core" version="3.0.0" /&gt;
+&lt;/dependencies&gt;</code></p>
+</li>
+<li>
+<p>Remove <strong>styles</strong>, <strong>scripts</strong> sections from the manifest file</p>
+</li>
+<li>Add localizations for permissions/settings to <strong><em>Localizations/en.CustomerReviews.json</em></strong> file <a href="https://github.com/VirtoCommerce/vc-samples/blob/release/3.0.0/CustomerReviews/src/CustomerReviews.Web/Localizations/en.customerReviews.json#L18-L30">as this</a>.<blockquote>
+<p>Sample resulting keys: <code>"permissions.customerReview:read"</code>, <code>"settings.CustomerReviews.CustomerReviewsEnabled.title"</code>. </p>
+</blockquote>
+</li>
+<li>
+<p>Remove <strong>permissions</strong>, <strong>settings</strong> definitions sections from the manifest file</p>
+</li>
+<li>
+<p>Changes in <strong><em>Module.cs</em></strong></p>
+<ol>
+<li>Change the class inheritance to interface <strong><em>IModule</em></strong>, then add implementation methods: <strong><em>Initialize, PostInitialize, Uninstall</em></strong> and property <strong><em>ModuleInfo</em></strong>. Check <a href="https://github.com/VirtoCommerce/vc-module-customer/tree/release/3.0.0/src/VirtoCommerce.CustomerModule.Web/Module.cs">VirtoCommerce.CustomerModule.Web/Module.cs</a> for another implementation example.</li>
+<li>Read the <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-3.0">Dependency injection in ASP.NET Core</a> article for additional info.</li>
+<li>Register all the needed classes for dependency injection inside <strong><em>Initialize</em></strong> method, like <strong><em>CustomerReviewDbContext, CustomerReviewRepository</em></strong>, etc.</li>
+<li>Register settings using interface <strong><em>ISettingsRegistrar</em></strong> in PostInitialize method:</li>
+</ol>
+<p><code>cs
+var settingsRegistrar = appBuilder.ApplicationServices.GetRequiredService&lt;ISettingsRegistrar&gt;();
+settingsRegistrar.RegisterSettings(ModuleConstants.Settings.AllSettings, ModuleInfo.Id);</code></p>
+<ol>
+<li>Register permissions using interface <strong><em>IPermissionsRegistrar</em></strong> in PostInitialize method: </li>
+</ol>
+<p><code>cs
+var permissionsProvider = appBuilder.ApplicationServices.GetRequiredService&lt;IPermissionsRegistrar&gt;();
+permissionsProvider.RegisterPermissions(ModuleConstants.Security.Permissions.AllPermissions.Select(x =&gt; new Permission() { GroupName = "CustomerReview", Name = x }).ToArray());</code></p>
+<ol>
+<li>Add this code into PostInitialize method, needed to ensure that the migrations would be applied: </li>
+</ol>
+<p><code>cs
+using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
+{
+    var dbContext = serviceScope.ServiceProvider.GetRequiredService&lt;CustomerReviewsDbContext&gt;();
+    dbContext.Database.MigrateIfNotApplied(MigrationName.GetUpdateV2MigrationNameByOwnerName(ModuleInfo.Id, &lt;&lt;your company prefix in moduleId&gt;&gt;));
+    dbContext.Database.EnsureCreated();
+    dbContext.Database.Migrate();
+}</code></p>
+<blockquote>
+<p>NOTE: The <strong>MigrateIfNotApplied</strong> extension method is needed for the database backward compatibility with version 2.x. This extension enables to skip generating the initial migration, as there are changes (tables, indexes) in the database already.</p>
+</blockquote>
+</li>
+<li>
+<p>Changes to all API Controller(s) in <strong>Controllers/Api</strong> folder:</p>
+<ol>
+<li>Refactor controllers to derive from <em>Microsoft.AspNetCore.Mvc.<strong>Controller</strong></em>.</li>
+<li>Change <em>RoutePrefix</em> attribute to <strong><em>Route</em></strong> for all endpoints</li>
+<li>Remove <em>ResponseType</em> attribute from all endpoints</li>
+<li>Change <em>CheckPermission</em> attribute to <strong><em>Authorize</em></strong> for all endpoints<blockquote>
+<p>If the endpoint should have a restricted access, an <strong><em>Authorize</em></strong> attribute with the required permission should be added. Use the <strong><em>ModuleConstants</em></strong> class, which was previously defined in <strong><em>CustomerReviews.Core</em></strong> project.</p>
+</blockquote>
+</li>
+<li>Review the exposed endpoints and refactor to <strong>be asynchronous</strong> (return <code>async Task&lt;&gt;</code>), if needed</li>
+<li>Mark each complex type parameter with <code>[FromBody]</code> attribute for all endpoints. The attribute for Delete endpoint should be <code>[FromQuery]</code>.</li>
+</ol>
+<blockquote>
+<p>E.g., SearchCustomerReviews method converted to ASP&#46;NET Core MVC:</p>
+</blockquote>
+<p><code>cs
+[HttpPost]
+[Route("search")]
+[Authorize(ModuleConstants.Security.Permissions.Read)]
+public async Task&lt;ActionResult&lt;CustomerReviewSearchResult&gt;&gt; SearchCustomerReviews([FromBody]CustomerReviewSearchCriteria criteria)</code></p>
+<blockquote>
+<p>Read <a href="https://docs.microsoft.com/en-us/aspnet/core/web-api/action-return-types?view=aspnetcore-3.1">Controller action return types in ASP.NET Core web API</a> for more info.
+4. If there are any JavaScript or stylesheet files in the project:
+1. Copy <strong>package.json</strong> from <a href="https://raw.githubusercontent.com/VirtoCommerce/vc-module-order/release/3.0.0/src/VirtoCommerce.OrdersModule.Web/package.json">sample package.json</a>;
+2. Copy <strong>webpack.config.js</strong> from <a href="https://raw.githubusercontent.com/VirtoCommerce/vc-module-order/release/3.0.0/src/VirtoCommerce.OrdersModule.Web/webpack.config.js">sample webpack.config.js</a>;
+3. Change the namespace on line 36 in webpack.config.js to be equal to module's identifier:</p>
+</blockquote>
+<p><code>js
+namespace: 'CustomerReviews'</code></p>
+<ol>
+<li>
+<p>Open Command prompt and navigate to CustomerReviews&#46;Web folder:</p>
+<ol>
+<li>Run <code>npm install</code></li>
+<li>Run <code>npm run webpack:dev</code><blockquote>
+<p>Note: fix any css errors, of the previous command would fail. For CustomerReviews sample also change line 12 in webpack.config.js to:</p>
+</blockquote>
+</li>
+</ol>
+<p><code>js
+...glob.sync('./Content/css/*.css', { nosort: true })</code></p>
+</li>
+<li>
+<p>Add <code>dist/</code> line to <code>.gitignore</code> file</p>
+</li>
+<li>Add <code>node_modules/</code> line to <code>.gitignore</code> file.</li>
+</ol>
+</li>
+</ol>
+<h2 id="6-make-changes-in-customerreviewstests-project">6. Make changes in CustomerReviews.Tests project</h2>
+<ol>
+<li>
+<p>Reference the required NuGet packages by adding this <code>ItemGroup</code> to project file:</p>
+<p><code>xml
+    &lt;ItemGroup&gt;
+        &lt;PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" /&gt;
+        &lt;PackageReference Include="Moq" Version="4.13.1" /&gt;
+        &lt;PackageReference Include="MSTest.TestAdapter" Version="2.0.0" /&gt;
+        &lt;PackageReference Include="MSTest.TestFramework" Version="2.0.0" /&gt;
+        &lt;PackageReference Include="xunit" Version="2.4.1" /&gt;
+        &lt;PackageReference Include="xunit.runner.console" Version="2.4.1"&gt;
+            &lt;PrivateAssets&gt;all&lt;/PrivateAssets&gt;
+            &lt;IncludeAssets&gt;runtime; build; native; contentfiles; analyzers&lt;/IncludeAssets&gt;
+        &lt;/PackageReference&gt;
+        &lt;PackageReference Include="xunit.runner.visualstudio" Version="2.4.1"&gt;
+            &lt;PrivateAssets&gt;all&lt;/PrivateAssets&gt;
+            &lt;IncludeAssets&gt;runtime; build; native; contentfiles; analyzers&lt;/IncludeAssets&gt;
+        &lt;/PackageReference&gt;
+        &lt;DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" /&gt;
+    &lt;/ItemGroup&gt;</code></p>
+</li>
+<li>
+<p>Add <strong><em>TestAsyncQueryProvider</em></strong> class under Common folder. Paste the class implementation <a href="https://raw.githubusercontent.com/VirtoCommerce/vc-samples/release/3.0.0/CustomerReviews/tests/CustomerReviews.Test/Common/TestAsyncQueryProvider.cs">from here</a>.</p>
+</li>
+<li>Remove inheritance from <strong><em>FunctionalTestBase</em></strong>    for each tests class.</li>
+<li>
+<p>Add the integration tests under <strong>IntegrationTests</strong> folder. Ensure, that each integration tests class is marked with this <strong>Trait</strong> attribute:</p>
+<p><code>cs
+[Trait("Category", "IntegrationTest")]</code></p>
+</li>
+</ol>
+<h2 id="7-create-module-package">7. Create module package</h2>
+<ol>
+<li>Please, read the article about <a href="https://github.com/VirtoCommerce/vc-platform/blob/release/3.0.0/build/README.md">VirtoCommerce.GlobalTool</a>.</li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../Implementing-authorization-mechanism-using-JWT/" title="Implementing authorization mechanism using Json Web Tokens" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Implementing authorization mechanism using Json Web Tokens
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../about/" title="Wefwe dfvdv" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Wefwe dfvdv
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

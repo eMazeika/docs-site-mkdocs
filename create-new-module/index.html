@@ -1,0 +1,1237 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.0">
+    
+    
+      
+        <title>How to create a new Dummy module - MkLorum</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.18ac144a.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-create-a-new-dummy-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="MkLorum" class="md-header-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            MkLorum
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              How to create a new Dummy module
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MkLorum" class="md-nav__button md-logo" aria-label="MkLorum">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    MkLorum
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Welcome to MkDocs" class="md-nav__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Dynamic-Property/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Email-sending-settings/" title="Email sending settings documentation" class="md-nav__link">
+      Email sending settings documentation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Generating%20pdf-file/" title="Pdf-file creation support" class="md-nav__link">
+      Pdf-file creation support
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Implementing-authorization-mechanism-using-JWT/" title="Implementing authorization mechanism using Json Web Tokens" class="md-nav__link">
+      Implementing authorization mechanism using Json Web Tokens
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Migrate-module-from-the-Platform-2.0-to-3.0-version/" title="Update VC Platform Module from version 2.x to version 3" class="md-nav__link">
+      Update VC Platform Module from version 2.x to version 3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../about/" title="Wefwe dfvdv" class="md-nav__link">
+      Wefwe dfvdv
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../code-breaking-changes-included-in-v3/" title="Breaking changes included in VirtoCommerce 3.0" class="md-nav__link">
+      Breaking changes included in VirtoCommerce 3.0
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../connect-storefront-to-platform-v3/" title="Connect Storefront to Platform" class="md-nav__link">
+      Connect Storefront to Platform
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        How to create a new Dummy module
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="How to create a new Dummy module" class="md-nav__link md-nav__link--active">
+      How to create a new Dummy module
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-solution-and-projects-in-correct-structure" class="md-nav__link">
+    1. Create solution and projects in correct structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fill-dummymodulecore-project" class="md-nav__link">
+    2. Fill DummyModule.Core project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fill-dummymoduledata-project" class="md-nav__link">
+    3. Fill DummyModule.Data project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fill-dummymoduleweb-project" class="md-nav__link">
+    4. Fill DummyModule&#46;Web project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fill-dummymoduletests-project" class="md-nav__link">
+    5. Fill DummyModule.Tests project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-module-package" class="md-nav__link">
+    6. Create module package
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-precompiled-binaries-linux/" title="Deploy Platform V3 from precompiled binaries on Linux" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Linux
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-precompiled-binaries-windows/" title="Deploy Platform V3 from precompiled binaries on Windows" class="md-nav__link">
+      Deploy Platform V3 from precompiled binaries on Windows
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-from-source-code/" title="Deploy Platform from source code" class="md-nav__link">
+      Deploy Platform from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../deploy-module-from-source-code/" title="Deploy Module from source code" class="md-nav__link">
+      Deploy Module from source code
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../extend-DB-model/" title="How to extend the DB model of VC module (v3)" class="md-nav__link">
+      How to extend the DB model of VC module (v3)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started/" title="Getting started (title from metadata)" class="md-nav__link">
+      Getting started (title from metadata)
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../sharing-bearer-tokens-across-platform-instances/" title="How to sharing bearer tokens across platform instances" class="md-nav__link">
+      How to sharing bearer tokens across platform instances
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../swagger-endpoints/" title="Swagger endpoints" class="md-nav__link">
+      Swagger endpoints
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../upgrade-storefront-autorest-cli-to-v3/" title="How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront" class="md-nav__link">
+      How to upgrade AutoRest-generated clients to VirtoCommerce v3 in the Storefront
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../using-autorest-with-v3/" title="How to generate AutoRest-generated clients with the Platform v.3" class="md-nav__link">
+      How to generate AutoRest-generated clients with the Platform v.3
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../whats-new/" title="Whats new" class="md-nav__link">
+      Whats new
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-22" type="checkbox" id="nav-22">
+    
+    <label class="md-nav__link" for="nav-22">
+      My lessons (custom title)
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="My lessons (custom title)" data-md-level="1">
+      <label class="md-nav__title" for="nav-22">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        My lessons (custom title)
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson3/" title="Lesson 3 - How to create Virto commerce module (API)" class="md-nav__link">
+      Lesson 3 - How to create Virto commerce module (API)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson4/" title="Lessons 4 - How to build and customize platform manager Web UI (AngularJS)" class="md-nav__link">
+      Lessons 4 - How to build and customize platform manager Web UI (AngularJS)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson1/" title="Lesson 1 - How to deploy and configure Virto Commerce" class="md-nav__link">
+      Lesson 1 - How to deploy and configure Virto Commerce
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../lessons/lesson2/" title="Lesson 2 - How to import new products into Virto Commerce catalog" class="md-nav__link">
+      Lesson 2 - How to import new products into Virto Commerce catalog
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23" type="checkbox" id="nav-23">
+    
+    <label class="md-nav__link" for="nav-23">
+      Modules
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Modules" data-md-level="1">
+      <label class="md-nav__title" for="nav-23">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-23-1" type="checkbox" id="nav-23-1">
+    
+    <label class="md-nav__link" for="nav-23-1">
+      Catalog
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Catalog" data-md-level="2">
+      <label class="md-nav__title" for="nav-23-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Catalog
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../modules/catalog/" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24" type="checkbox" id="nav-24">
+    
+    <label class="md-nav__link" for="nav-24">
+      Vc2devguide
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Vc2devguide" data-md-level="1">
+      <label class="md-nav__title" for="nav-24">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Vc2devguide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/introduction/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/system-requirements/" title="System Requirements - Virto Commerce 2 Developer Guide" class="md-nav__link">
+      System Requirements - Virto Commerce 2 Developer Guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-24-3" type="checkbox" id="nav-24-3">
+    
+    <label class="md-nav__link" for="nav-24-3">
+      Development scenarios
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.42z"/></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="Development scenarios" data-md-level="2">
+      <label class="md-nav__title" for="nav-24-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        </span>
+        Development scenarios
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vc2devguide/development-scenarios/working-with-platform-api/" title="Working with platform API" class="md-nav__link">
+      Working with platform API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-solution-and-projects-in-correct-structure" class="md-nav__link">
+    1. Create solution and projects in correct structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fill-dummymodulecore-project" class="md-nav__link">
+    2. Fill DummyModule.Core project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fill-dummymoduledata-project" class="md-nav__link">
+    3. Fill DummyModule.Data project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fill-dummymoduleweb-project" class="md-nav__link">
+    4. Fill DummyModule&#46;Web project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-fill-dummymoduletests-project" class="md-nav__link">
+    5. Fill DummyModule.Tests project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-module-package" class="md-nav__link">
+    6. Create module package
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="how-to-create-a-new-dummy-module">How to create a new Dummy module</h1>
+<p>How to create a new module from scratch? Follow the Dummy module example.</p>
+<h2 id="1-create-solution-and-projects-in-correct-structure">1. Create solution and projects in correct structure</h2>
+<ol>
+<li>Create empty <strong><em>DummyModule</em></strong> solution: https://docs.microsoft.com/en-us/visualstudio/get-started/tutorial-projects-solutions?view=vs-2019##create-a-solution</li>
+<li>Add <strong><em>src</em></strong> and <strong><em>tests</em></strong> Solution Folders (using Visual Studio)</li>
+<li>In <strong><em>src</em></strong> add project using "<em>Class library (.NET Core)</em>" template:</li>
+<li>Project name: <strong><em>DummyModule.Core</em></strong> </li>
+<li>Location: ...\<em>DummyModule\<strong>src</strong></em> folder (create the missing <strong>src</strong> folder).</li>
+<li>Add <strong><em>DummyModule.Data</em></strong> project in the same way, ensure that it located under <strong>src</strong> folder.</li>
+<li>Add  <strong><em>DummyModule.Web</em></strong> using "<em>ASP.NET Core Web Application</em>" Empty template, ensure that it located under <strong>src</strong> folder.</li>
+<li>Delete the auto-generated Class1.cs from all projects.</li>
+<li>In <strong><em>tests</em></strong> folder add a project using "<em>xUnit Test Project (.NET Core)</em>" template:</li>
+<li>Project name: <strong><em>DummyModule.Tests</em></strong> </li>
+<li>Location: ...\<em>DummyModule\<strong>tests</strong></em> folder (create the missing <strong>tests</strong> folder).</li>
+<li>Set "Target framework" to ".NET Core 3.1" for all 4 projects.</li>
+<li>References to projects:</li>
+<li><strong>DummyModule.Data</strong>: add reference to DummyModule.Core project</li>
+<li><strong>DummyModule.Web</strong>: add references to DummyModule.Core, DummyModule.Data projects</li>
+<li><strong>DummyModule.Tests</strong>: add references to DummyModule.Core, DummyModule.Data, DummyModule.Web projects</li>
+<li>References to NuGet packages:<ol>
+<li><strong>DummyModule.Core</strong>: add reference to the latest version <strong><em>VirtoCommerce.Platform.Core</em></strong> package.</li>
+<li><strong>DummyModule.Data</strong>: add reference to the latest version <strong><em>VirtoCommerce.Platform.Data</em></strong> package.</li>
+</ol>
+</li>
+<li>
+<p><strong><em>(Outdated)</em></strong> References to NuGet packages in <strong><em>VirtoCommerce.Platform.Web</em></strong>:</p>
+<ol>
+<li>(Double click in Visual Studio to) open <em>DummyModule.Web.csproj</em> file for editing;</li>
+<li>Add new ItemGroup:</li>
+</ol>
+<p><code>xml
+&lt;ItemGroup&gt;
+    &lt;PackageReference Include="Microsoft.AspNetCore.App" /&gt;
+&lt;/ItemGroup&gt;</code></p>
+</li>
+<li>
+<p>Compile the solution (there should be no warnings). </p>
+</li>
+</ol>
+<h2 id="2-fill-dummymodulecore-project">2. Fill DummyModule.Core project</h2>
+<ol>
+<li>
+<p>Add class <strong><em>ModuleConstants.cs</em></strong> for module constants:</p>
+<ol>
+<li>Inside <strong><em>ModuleConstants</em></strong> add sub-classes <strong><em>Security</em></strong> and <strong><em>Permissions</em></strong> like this:</li>
+</ol>
+<p>```cs
+        public static class Security
+        {
+            public static class Permissions
+            {
+                public const string Access = "dummy:access";
+                public const string Read =   "dummy:read";
+                public const string Create = "dummy:create";
+                public const string Update = "dummy:update";
+                public const string Delete = "dummy:delete";</p>
+<div class="codehilite"><pre><span></span><code><span class="err">            public static string[] AllPermissions = { Access, Read, Create, Update, Delete };</span>
+<span class="err">        }</span>
+<span class="err">    }</span>
+</code></pre></div>
+
+
+<p>```</p>
+<ol>
+<li>Add sub-classes <strong><em>Settings</em></strong> and <strong><em>General</em></strong> containing settings' definitions of type <strong><em>SettingDescriptor</em></strong>, e.g.,</li>
+</ol>
+<p><code>cs
+        public static SettingDescriptor DummyInteger = new SettingDescriptor
+        {
+            Name = "Dummy.Integer",
+            GroupName = "Dummy|General",
+            ValueType = SettingValueType.Integer,
+            DefaultValue = 50
+        };</code></p>
+<p>Check sample <a href="https://github.com/VirtoCommerce/vc-samples/blob/v3/DummyModule/DummyModule/src/DummyModule.Core/ModuleConstants.cs">ModuleConstants.cs</a> for complete code.</p>
+<ol>
+<li>Other constants.</li>
+</ol>
+</li>
+<li>
+<p>If there is any domain models in your module, add <strong>Models</strong> folder. All domain models should be defined in Models folder.</p>
+</li>
+<li>
+<p>If there is any need for search services, add <strong>Search</strong> sub-folder. Add all <strong><em>SearchCriteria</em></strong> and <strong><em>SearchResult</em></strong> classes there.</p>
+</li>
+<li>
+<p><strong>Services</strong> folder: in order to use the created models, create <strong>interfaces</strong> of the required services. Typically, interfaces containing CRUD and search operations are defined.</p>
+</li>
+<li>
+<p><strong>Events</strong> folder: add model-related changing/changed events. Derive from the base <code>GenericChangedEntryEvent</code> class.</p>
+</li>
+<li>
+<p><strong>Notifications</strong> folder: define new types of <strong><em>Notifications</em></strong>, that your module would expose. Each class should inherit from <strong><em>EmailNotification</em></strong>/<strong><em>SmsNotification</em></strong> or own class, based on <strong><em>Notification</em></strong>.</p>
+</li>
+</ol>
+<h2 id="3-fill-dummymoduledata-project">3. Fill DummyModule.Data project</h2>
+<ol>
+<li>If there is any (domain) data to be persisted, add <strong>Models</strong> folder. All persistency related models should be defined in Models folder. Typically, each of the classes under this folder would have a corresponding class in DummyModule.<strong>Core</strong>/Models. The class should:</li>
+<li>define the DB table structure and restrictions;</li>
+<li>be able to convert from/to the corresponding Core model class.</li>
+<li>Add <strong>Repositories</strong> folder. Under it:<ol>
+<li>Add class <strong><em>DummyDbContext</em></strong>, deriving from <code>DbContextWithTriggers</code>. Check and copy class contents from <a href="https://github.com/VirtoCommerce/vc-samples/blob/v3/DummyModule/DummyModule/src/DummyModule.Data/Repositories/DummyDbContext.cs">sample DummyDbContext.cs</a>.</li>
+<li>Add class <strong><em>DesignTimeDbContextFactory</em></strong>. Check and copy class contents from <a href="https://github.com/VirtoCommerce/vc-samples/blob/v3/DummyModule/DummyModule/src/DummyModule.Data/Repositories/DesignTimeDbContextFactory.cs">sample DesignTimeDbContextFactory.cs</a>. Double-check that connection to your development SQL server is correct.</li>
+<li>Add data repository abstraction (interface), deriving from <strong><em>IRepository</em></strong> for the defined persistency model.</li>
+<li>Add the repository implementation class for the previously defined interface and deriving from <code>DbContextRepositoryBase&lt;DummyDbContext&gt;</code>.</li>
+</ol>
+</li>
+<li>Generate code-first migration:</li>
+<li>Execute "<strong>Set as Startup Project</strong>" on CustomerReviews.<strong>Data</strong> project in Solution Explorer</li>
+<li>Open NuGet <strong>Package Manager Console</strong></li>
+<li>Select "src\DummyModule.<strong>Data</strong>" as "<strong>Default project</strong>"</li>
+<li>Run command:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="go">    Add-Migration Initial -Verbose</span>
+</code></pre></div>
+
+
+<p>A new EF migration gets generated. Read more details on extending an existing module's model: <a href="/extend-DB-model.md">How to extend the DB model of VC module</a>.</p>
+<ol>
+<li><strong>Caching</strong> folder: add it, if data caching should be used. This folder is for the cache region classes. Typically, each model should have its own region. Derive CacheRegion from generic <code>CancellableCacheRegion&lt;T&gt;</code> class e.g., <code>public class StoreCacheRegion : CancellableCacheRegion&lt;StoreCacheRegion&gt;</code>.</li>
+<li><strong>Services</strong> folder: add implementations of the interfaces that were defined in the <strong>.Core</strong> project.</li>
+<li><strong>ExportImport</strong> folder: add class for data export/import. It should be called from <strong><em>Module.cs</em></strong> and contain implementation for module data export and import.</li>
+<li><strong>Handlers</strong> folder: add handlers for the <em>domain events</em>, which were defined under <strong>.Core/Events</strong>.</li>
+</ol>
+<h2 id="4-fill-dummymoduleweb-project">4. Fill DummyModule&#46;Web project</h2>
+<p>Typical structure of <strong>.Web</strong> project is:</p>
+<ul>
+<li>Controllers/Api - API controllers;</li>
+<li>Localizations - translation resources for UI;</li>
+<li>Scripts - AngularJS module for extending Platform Manager UI;</li>
+<li>Module.cs - the entry point for module managed code;</li>
+<li>module.manifest - the main file of a module, the module definition.</li>
+</ul>
+<p><strong>Project items to add:</strong></p>
+<ol>
+<li><strong><em>module.manifest</em></strong> (xml file)</li>
+<li>
+<p>Identifier - a module identifier, each modules' identifier should be unique:</p>
+<p><code>xml
+&lt;id&gt;VirtoCommerce.Dummy&lt;/id&gt;</code></p>
+</li>
+<li>
+<p>Versioning - actual version and (optional) prerelease version tag of a module:</p>
+<p><code>xml
+&lt;version&gt;1.0.0&lt;/version&gt;
+&lt;version-tag&gt;v1&lt;/version-tag&gt;</code></p>
+</li>
+<li>
+<p>Required minimal version of VC Platform:</p>
+<p><code>xml
+&lt;platformVersion&gt;3.0.0&lt;/platformVersion&gt;</code></p>
+</li>
+<li>
+<p>Module dependencies - list of modules (with versions), functions of which will be used in the new module:</p>
+<p><code>xml
+&lt;dependencies&gt;
+    &lt;dependency id="VirtoCommerce.Core" version="3.0.0" /&gt;
+&lt;/dependencies&gt;</code></p>
+</li>
+<li>
+<p>Title and description - name and description of a new module that will be displayed in the Platform Manager and Swagger UI:</p>
+<p><code>xml
+&lt;title&gt;Dummy module&lt;/title&gt;
+&lt;description&gt;Sample module for training purposes.&lt;/description&gt;</code></p>
+</li>
+<li>
+<p>Authors - list of the developers, who wrote the module:</p>
+<p><code>xml
+&lt;authors&gt;
+    &lt;author&gt;Andrei Kostyrin&lt;/author&gt;
+    &lt;author&gt;Egidijus Mazeika&lt;/author&gt;
+&lt;/authors&gt;</code></p>
+</li>
+<li>
+<p>Owners - list of the module owners:</p>
+<p><code>xml
+&lt;owners&gt;
+    &lt;owner&gt;Virto Commerce&lt;/owner&gt;
+&lt;/owners&gt;</code></p>
+</li>
+<li>
+<p>Module groups - optional, logical grouping of the modules:</p>
+<p>```xml
+<groups>
+    <group>samples</group>
+</groups></p>
+<p>```</p>
+</li>
+<li>
+<p>ProjectUrl - optional URL to get more details on the module:</p>
+<p><code>xml
+&lt;projectUrl&gt;https://github.com/VirtoCommerce/vc-samples&lt;/projectUrl&gt;</code></p>
+</li>
+<li>
+<p>IconUrl - optional icon for the module to display in Platform's module management UI:</p>
+<p><code>xml
+&lt;iconUrl&gt;&lt;/iconUrl&gt;</code></p>
+</li>
+<li>
+<p>ReleaseNotes, copyright, tags - optional, additional information for the module:</p>
+<p><code>xml
+&lt;releaseNotes&gt;First version.&lt;/releaseNotes&gt;
+&lt;copyright&gt;Copyright &amp;copy; 2011-2020 Virto Commerce. All rights reserved&lt;/copyright&gt;
+&lt;tags&gt;sample&lt;/tags&gt;</code></p>
+</li>
+<li>
+<p>AssemblyFile and ModuleType - information for the module's managed code library loading into VC Platform:</p>
+<p><code>xml
+&lt;assemblyFile&gt;DummyModule.Web.dll&lt;/assemblyFile&gt;
+&lt;moduleType&gt;DummyModule.Web.Module, DummyModule.Web&lt;/moduleType&gt;</code></p>
+</li>
+<li>
+<p><strong>JsonConverters</strong> folder: add it, if polymorphic data should be accepted by the API methods and deserialized correctly. This folder should contain converter(s) for populating the JSON values onto the target object.</p>
+</li>
+<li>
+<p><strong><em>Module.cs</em></strong> class: the main entry point for module managed code, containing database initialization, registration of new repositories, services, model types and overrides:</p>
+<ol>
+<li>Implement <a href="https://github.com/VirtoCommerce/vc-platform/blob/release/3.0.0/src/VirtoCommerce.Platform.Core/Modularity/IModule.cs"><em>VirtoCommerce.Platform.Core.Modularity.IModule</em></a> interface like this:</li>
+</ol>
+<p>```cs
+public class Module : IModule
+{
+    public ManifestModuleInfo ModuleInfo { get; set; }</p>
+<div class="codehilite"><pre><span></span><code><span class="k">public</span> <span class="n">void</span> <span class="k">Initialize</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">serviceCollection</span><span class="p">)</span>
+<span class="err">{</span>
+    <span class="o">//</span> <span class="k">database</span> <span class="n">initialization</span>
+    <span class="n">var</span> <span class="n">configuration</span> <span class="o">=</span> <span class="n">serviceCollection</span><span class="p">.</span><span class="n">BuildServiceProvider</span><span class="p">().</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">IConfiguration</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="n">var</span> <span class="n">connectionString</span> <span class="o">=</span> <span class="n">configuration</span><span class="p">.</span><span class="n">GetConnectionString</span><span class="p">(</span><span class="ss">&quot;VirtoCommerce.Dummy&quot;</span><span class="p">)</span> <span class="o">??</span> <span class="n">configuration</span><span class="p">.</span><span class="n">GetConnectionString</span><span class="p">(</span><span class="ss">&quot;VirtoCommerce&quot;</span><span class="p">);</span>
+    <span class="n">serviceCollection</span><span class="p">.</span><span class="n">AddDbContext</span><span class="o">&lt;</span><span class="n">DummyDbContext</span><span class="o">&gt;</span><span class="p">(</span><span class="k">options</span> <span class="o">=&gt;</span> <span class="k">options</span><span class="p">.</span><span class="n">UseSqlServer</span><span class="p">(</span><span class="n">connectionString</span><span class="p">));</span>
+<span class="err">}</span>
+
+<span class="k">public</span> <span class="n">void</span> <span class="n">PostInitialize</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">appBuilder</span><span class="p">)</span>
+<span class="err">{</span>
+    <span class="o">//</span> <span class="n">register</span> <span class="n">settings</span>
+    <span class="n">var</span> <span class="n">settingsRegistrar</span> <span class="o">=</span> <span class="n">appBuilder</span><span class="p">.</span><span class="n">ApplicationServices</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">ISettingsRegistrar</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="n">settingsRegistrar</span><span class="p">.</span><span class="n">RegisterSettings</span><span class="p">(</span><span class="n">ModuleConstants</span><span class="p">.</span><span class="n">Settings</span><span class="p">.</span><span class="n">AllSettings</span><span class="p">,</span> <span class="n">ModuleInfo</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+
+    <span class="o">//</span> <span class="n">register</span> <span class="n">permissions</span>
+    <span class="n">var</span> <span class="n">permissionsProvider</span> <span class="o">=</span> <span class="n">appBuilder</span><span class="p">.</span><span class="n">ApplicationServices</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">IPermissionsRegistrar</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="n">permissionsProvider</span><span class="p">.</span><span class="n">RegisterPermissions</span><span class="p">(</span><span class="n">ModuleConstants</span><span class="p">.</span><span class="k">Security</span><span class="p">.</span><span class="n">Permissions</span><span class="p">.</span><span class="n">AllPermissions</span><span class="p">.</span><span class="k">Select</span><span class="p">(</span><span class="n">x</span> <span class="o">=&gt;</span>
+        <span class="k">new</span> <span class="n">Permission</span><span class="p">()</span> <span class="err">{</span> <span class="n">GroupName</span> <span class="o">=</span> <span class="ss">&quot;Dummy&quot;</span><span class="p">,</span> <span class="n">Name</span> <span class="o">=</span> <span class="n">x</span> <span class="err">}</span><span class="p">).</span><span class="n">ToArray</span><span class="p">());</span>
+
+    <span class="o">//</span> <span class="n">Ensure</span> <span class="n">that</span> <span class="k">any</span> <span class="n">pending</span> <span class="n">migrations</span> <span class="k">are</span> <span class="n">applied</span>
+    <span class="k">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">serviceScope</span> <span class="o">=</span> <span class="n">appBuilder</span><span class="p">.</span><span class="n">ApplicationServices</span><span class="p">.</span><span class="n">CreateScope</span><span class="p">())</span>
+    <span class="err">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">var</span> <span class="n">dbContext</span> <span class="o">=</span> <span class="n">serviceScope</span><span class="p">.</span><span class="n">ServiceProvider</span><span class="p">.</span><span class="n">GetRequiredService</span><span class="o">&lt;</span><span class="n">DummyDbContext</span><span class="o">&gt;</span><span class="p">())</span>
+        <span class="err">{</span>
+            <span class="n">dbContext</span><span class="p">.</span><span class="k">Database</span><span class="p">.</span><span class="n">EnsureCreated</span><span class="p">();</span>
+            <span class="n">dbContext</span><span class="p">.</span><span class="k">Database</span><span class="p">.</span><span class="n">Migrate</span><span class="p">();</span>
+        <span class="err">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
+
+<span class="k">public</span> <span class="n">void</span> <span class="n">Uninstall</span><span class="p">()</span>
+<span class="err">{</span>
+    <span class="o">//</span> <span class="k">do</span> <span class="k">nothing</span> <span class="k">in</span> <span class="n">here</span>
+<span class="err">}</span>
+</code></pre></div>
+
+
+<p>}
+```</p>
+</li>
+<li>
+<p>If the module should support data export/import, implement <a href="https://github.com/VirtoCommerce/vc-platform/blob/release/3.0.0/src/VirtoCommerce.Platform.Core/ExportImport/IExportSupport.cs"><em>IExportSupport</em></a> and <a href="https://github.com/VirtoCommerce/vc-platform/blob/release/3.0.0/src/VirtoCommerce.Platform.Core/ExportImport/IImportSupport.cs"><em>IImportSupport</em></a> interfaces accordingly. Call the methods of the class(es), that were defined in <strong>.Data/ExportImport</strong> folder.</p>
+</li>
+<li>
+<p>Add <strong>Controllers/Api</strong> folder, if any API endpoints need to be exposed. Add API Controller(s), derived from <em>Microsoft.AspNetCore.Mvc.Controller</em>. Sample ASP.NET MVC endpoint:</p>
+<p><code>cs
+    [HttpGet]
+    [Route("getnew")]
+    [Authorize(ModuleConstants.Security.Permissions.Create)]
+    public ActionResult&lt;DummyModel&gt; GetNewDummyModel()</code></p>
+<p>If the endpoint should have a restricted access, an <strong><em>Authorize</em></strong> attribute with the required permission should be provided. Use the <strong><em>ModuleConstants</em></strong> class, which was previously defined in <strong><em>Dummy.Core</em></strong> project.</p>
+</li>
+<li>
+<p>Optional <strong>Content</strong> folder: add module icon, stylesheets or any other optional content.</p>
+</li>
+<li>
+<p>Optional <strong>Scripts</strong> folder: add <strong><em>module.js</em></strong> and any required subfolders: blades, resources, widgets, etc. Sample <strong><em>module.js</em></strong> file:</p>
+<p>```js
+//Call this to register our module to main application
+var moduleName = "virtoCommerce.dummy";</p>
+<p>if (AppDependencies !== undefined) {
+    AppDependencies.push(moduleName);
+}</p>
+<p>angular.module(moduleName, [])
+    ;
+```</p>
+</li>
+<li>
+<p>If there are any JavaScript or stylesheet files in the project:</p>
+<ol>
+<li>Copy <strong>package.json</strong> from <a href="https://github.com/VirtoCommerce/vc-module-order/blob/release/3.0.0/src/VirtoCommerce.OrdersModule.Web/package.json">sample package.json</a>;</li>
+<li>Copy <strong>webpack.config.js</strong> from <a href="https://github.com/VirtoCommerce/vc-module-order/blob/release/3.0.0/src/VirtoCommerce.OrdersModule.Web/webpack.config.js">sample webpack.config.js</a>;</li>
+<li>Change the namespace on line 36 in webpack.config.js to be equal to module's identifier:</li>
+</ol>
+<p><code>js
+namespace: 'VirtoCommerce.Dummy'</code></p>
+<ol>
+<li>Open command prompt and navigate to DummyModule&#46;Web folder:<ol>
+<li>Run <code>npm install</code></li>
+<li>Run <code>npm run webpack:dev</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Localizations</strong> folder. Add <strong><em>en.VirtoCommerce.Dummy.json</em></strong> file:</p>
+<p><code>json
+{
+    "permissions": {
+        "dummy:access": "Open Dummy menu",
+        "dummy:create": "Create Dummy related data",
+        "dummy:read": "View Dummy related data",
+        "dummy:update": "Update Dummy related data",
+        "dummy:delete": "Delete Dummy related data"
+    },
+    "settings": {
+        "Dummy": {
+            "ShortText": {
+                "title": "Dummy dictionary",
+                "description": "ShortText dummy dictionary setting"
+            },
+            "Integer": {
+                "title": "Dummy integer",
+                "description": "Dummy integer setting"
+            },
+            "DateTime": {
+                "title": "Dummy DateTime",
+                "description": "Dummy DateTime setting"
+            }
+        }
+    }
+}</code></p>
+</li>
+</ol>
+<h2 id="5-fill-dummymoduletests-project">5. Fill DummyModule.Tests project</h2>
+<ol>
+<li><strong>UnitTests</strong> folder: add unit tests here.</li>
+<li>
+<p><strong>IntegrationTests</strong> folder: add integration tests here. Ensure, that each integration tests class is marked with <strong>Trait</strong> attribute:</p>
+<p><code>cs
+[Trait("Category", "IntegrationTest")]</code></p>
+</li>
+</ol>
+<h2 id="6-create-module-package">6. Create module package</h2>
+<ol>
+<li>please read the <a href="https://github.com/VirtoCommerce/vc-platform/blob/release/3.0.0/build/README.md">article</a></li>
+</ol>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../connect-storefront-to-platform-v3/" title="Connect Storefront to Platform" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Connect Storefront to Platform
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../deploy-from-precompiled-binaries-linux/" title="Deploy Platform V3 from precompiled binaries on Linux" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Deploy Platform V3 from precompiled binaries on Linux
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["instant"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

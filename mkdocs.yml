@@ -1,0 +1,24 @@
+site_name: MkLorum
+#nav:
+#    - Virto Commerce Lessons:
+#        - lessons/lesson1.md
+#        - lessons/lesson2.md
+#        - Lesson 3 - How to create Virto commerce module (API): lessons/lesson3.md
+#        - Lesson 4 - How to build and customize platform manager Web UI (AngularJS): lessons/lesson4.md
+#    - Virto Commerce 2 Developer Guide:
+#        - Introduction: vc2devguide\introduction.md
+#        - System Requirements - Virto Commerce 2 Developer Guide : vc2devguide\system-requirements.md
+#        - Development Scenarios:
+#            - Working with platform API: vc2devguide\development-scenarios\working-with-platform-api.md
+#    - Index: index.md
+#    - About: about.md
+theme:
+    name: material
+    features:
+        - instant
+       # - tabs
+markdown_extensions:
+    - codehilite
+plugins:
+    - search # necessary for search to work
+    - awesome-pages
